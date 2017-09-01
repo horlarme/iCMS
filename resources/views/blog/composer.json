@@ -1,0 +1,32 @@
+{
+  "name": "horlarme/itblog",
+  "description" : "Create a blogging site in minutes.",
+  "version": "1.0.0",
+  "author": [
+    {
+      "name": "MeetWEB"
+    },
+    {
+      "name": "Lawal Oladipupo",
+      "email": "lawboi4love@gmail.com"
+    }
+  ],
+  "license" : "Apache 2.0",
+  "autoload": {
+    "psr-4": {
+      "ITBLOG\\": "class"
+    }
+  },
+  "require": {
+    "symfony/polyfill-mbstring": "~1.0",
+    "intervention/image": "^2.3",
+    "phpmailer/phpmailer": "^5.2",
+    "aura/uri": "^1.2",
+    "gregwar/image": "^2.0",
+    "dfridrich/php-mime-type": "^2",
+    "vakata/random": "^1.1",
+    "horlarme/uriman": "^1.0",
+    "segmentio/analytics-php": "1.5.1",
+    "facebook/graph-sdk": "^5.5"
+  }
+}
