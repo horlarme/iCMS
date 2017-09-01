@@ -1,0 +1,308 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #F3F3F3;
+}
+
+#wrapper {
+    width: 100%;
+    margin-top: 50px;
+}
+
+#page-wrapper {
+    padding: 15px 15px;
+    min-height: 600px;
+    background: #F3F3F3;
+
+}
+
+#page-inner {
+    width: 100%;
+    margin: 10px 20px 10px 0px;
+    background-color: #fff !important;
+    padding: 10px;
+}
+.text-center {
+    text-align: center;
+}
+.user-image-back {
+    background-color: #8B7BFF;
+}
+h5, .h5 {
+    font-size: 14px;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+}
+/*==============================================
+    MENU STYLES    
+    =============================================*/
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #06F;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: #06F;
+}
+
+.arrow {
+    float: right;
+}
+
+.fa.arrow:before {
+    content: "\f104";
+}
+
+.active > a > .fa.arrow:before {
+    content: "\f107";
+}
+
+.nav-second-level li,
+.nav-third-level li {
+    border-bottom: none !important;
+}
+
+.nav-second-level li a {
+    padding-left: 37px;
+}
+
+.nav-third-level li a {
+    padding-left: 55px;
+}
+
+.sidebar-collapse .nav {
+    padding: 0;
+}
+
+.sidebar-collapse .nav > li > a {
+    background: #333;
+    text-shadow: none;
+    color: white;
+}
+
+.sidebar-collapse .nav > li > a:hover {
+    background-color: transparent;
+}
+div.row.footer{
+    padding: 10px;
+    z-index: 1000;
+    width: 100%;
+    margin: 0;
+    background: black;
+}
+.nav > li.active > a{
+    background-color: black;
+}
+.sidebar-collapse > .nav > li > a {
+    padding: 15px 10px;
+}
+
+.sidebar-collapse > .nav > li {
+    border-bottom: 1px solid rgba(240, 240, 240, 1) !important;
+}
+
+.sidebar-collapse .nav > li > a:hover,
+.sidebar-collapse .nav > li > a:focus {
+    outline: 0;
+}
+
+.nav-second-level > li:last-child > a:after,
+.nav-third-level > li:last-child > a:after {
+    height: 50%;
+}
+
+.nav-third-level > li > a:after,
+.nav-third-level > li > a:before {
+    left: 40px;
+}
+
+.navbar-side {
+    border: none;
+    background-color: #202020;
+
+}
+
+.navbar-inverse {
+    background-color: #f3f3f3;
+    border-color: #D3D3D3;
+
+}
+
+.navbar-default {
+    border: 0px solid #DDDDDD;
+
+    /*! position: fixed; */
+    /*! right: 10px; */
+    /*! width: 81%; */
+    /*! z-index: 1000; */
+}
+
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: #B40101;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: #fff;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #FFF;
+}
+
+.nav > li > a > i {
+    margin-right: 10px;
+}
+
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+    color: #000000;
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: #8B7BFF;
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: #8B7BFF;
+}
+
+.adjust-nav {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.navbar-toggle {
+    background-color: #8B7BFF;
+}
+
+/*==============================================
+    DASHBOARD STYLES     
+    =============================================*/
+
+.bg-color-blue {
+    background-color: #9A86EB;
+    color: #fff;
+}
+
+.no-boder {
+    border: 1px solid #f3f3f3;
+}
+
+.back-footer-blue {
+    background-color: #7479E6;
+    border-top: 0px solid #fff;
+}
+
+/*==============================================
+    BOOTSTRAP STYLE CHANGES     
+    =============================================*/
+.nav-tabs > li > a {
+    -webkit-border-radius: 0px 0px 0px 0px;
+    -moz-border-radius: 0px 0px 0px 0px;
+    border-radius: 0px 0px 0px 0px;
+}
+
+.panel-group .panel {
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
+.panel {
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
+.panel-heading {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.btn {
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
+.progress {
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+}
+
+/*==============================================
+    MEDIA QUERIES     
+    =============================================*/
+
+@media (min-width: 768px) {
+    #page-wrapper {
+        margin: 0 0 0 260px;
+        padding: 15px 30px;
+        /*! min-height: 1200px; */
+
+    }
+    .navbar-side {
+        z-index: 1;
+        position: absolute;
+        width: 260px;
+        float: left;
+    }
+    .navbar {
+        border-radius: 0px;
+    }
+}
+.new-post div[class=col-] {
+    margin-right: 0;
+    margin-left: 0;
+}
+.nopadding {
+    padding: 0;
+}
+
+.btntotext {
+    border: none;
+    background: none;
+    cursor: default;
+}
+
+.blogdescription {
+    height: 125px;
+    resize: none;
+}
+
+input[name=user-image] {
+    max-height: 0;
+}
+
+label[for=user-image]:hover {
+    text-shadow: 0 0 0 black;
+}
+
+label[for=user-image] {
+    width: 100%;
+    color: #fcfcfc;
+    padding: 10px;
+    text-shadow: 0 0 0 white;
+    background-color: #59ae69;
+}
+.footer{
+    padding: 15px;
+    margin: 0;
+    text-align: center;
+    color: white;
+}
+.navbar-nav .dropdown li{
+    width: 60%;
+    float: right;
+}
+.navbar-nav li.user-image-box{
+    width: 40%;
+    float: left;
+    padding: 10px;
+}
+.navbar-nav .user-image-icon{
+    width: 100%;
+    margin-top: -5px;
+}
