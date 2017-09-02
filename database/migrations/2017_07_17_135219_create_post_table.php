@@ -32,9 +32,9 @@ class CreatePostTable extends Migration
 
             //Setting the foreign key
             //Links to the user
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             //Link to the category
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -45,8 +45,6 @@ class CreatePostTable extends Migration
      */
     public function down()
     {
-        Schema::table('post', function (Blueprint $table) {
-            //
-        });
+        DB::drop('categories');
     }
 }

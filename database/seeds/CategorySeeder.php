@@ -12,6 +12,10 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([[
+            'name' => 'Undefined',
+            'title' => 'Doesn\'s hold any category',
+            'icon' => 'fi-wrench'
+        ],[
             'name' => 'Security',
             'title' => 'Protect your device and self with security tips and helps.',
             'icon' => 'fi-wrench'

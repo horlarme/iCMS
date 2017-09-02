@@ -13,7 +13,7 @@ class AddTimeColumnToRoleTable extends Migration
      */
     public function up()
     {
-        Schema::table('user_role', function (Blueprint $table) {
+        Schema::table('userrole', function (Blueprint $table) {
             $table->timestamps();
         });
     }

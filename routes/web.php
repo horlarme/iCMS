@@ -10,7 +10,7 @@ Route::prefix('/')->group(function () {
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
-Route::group(['prefix' => '/administrator', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => '/advance', 'middleware' => 'auth'], function () {
 
     Route::get('', 'PageController@index')->name('dashboard');
 

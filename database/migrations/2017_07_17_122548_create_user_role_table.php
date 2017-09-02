@@ -13,7 +13,7 @@ class CreateUserRoleTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_role', function (Blueprint $table){
+        Schema::create('userrole', function (Blueprint $table){
             $table->increments('id');
             $table->integer('role_id')->unsigned();
             $table->integer('user_id')->unsigned()->unique();
@@ -31,6 +31,6 @@ class CreateUserRoleTable extends Migration
      */
     public function down()
     {
-        Schema::drop('role');
+        Schema::drop('userrole');
     }
 }
