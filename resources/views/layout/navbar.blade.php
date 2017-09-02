@@ -69,12 +69,12 @@
             <li>
                 <a href="#"><i class="fa fa-medkit"></i>Settings<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
+                @php($settingList = \App\SettingList::all())
+                @foreach($settingList as $setting)
                     <li>
-                        <a href="settings-app.html"><i class="fa fa-medkit"></i>Edit Blog</a>
+                        <a href="{{route('setting', $setting->name)}}"><i class="fa fa-medkit"></i>{{ $setting->value }}</a>
                     </li>
-                    <li>
-                        <a href="settings-cpanel"><i class="fa fa-medkit"></i>Edit Admin</a>
-                    </li>
+                @endforeach
                 </ul>
             </li>
             <!--Settings-->

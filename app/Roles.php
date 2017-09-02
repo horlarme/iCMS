@@ -13,7 +13,7 @@ class Roles extends Model
     /**
      * Setting the table to be used
      */
-    protected $table = 'user_role';
+    protected $table = 'userrole';
 
     /**
      * Fillables

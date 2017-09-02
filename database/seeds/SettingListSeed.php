@@ -13,7 +13,8 @@ class SettingListSeed extends Seeder
     {
         DB::table('settinglist')->insert([
         		[
-        			'name' => 'app'
+        			'name' => 'app',
+        			'value' => 'Application Setting'
         		]
         	]);
     }

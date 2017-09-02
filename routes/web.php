@@ -31,6 +31,11 @@ Route::group(['prefix' => '/advance', 'middleware' => 'auth'], function () {
         Route::get('/scheduled', 'PostController@new')->name('post.scheduled');
         Route::get('/published', 'PostController@new')->name('post.published');
     });
+    //Settings
+    Route::group(['middleware' => 'auth', 'prefix' => 'setting'], function () {
+        Route::get('/{setting}', 'AppSettingController@view')->name('setting');
+    });
+    //Settings
 });
 
 /**
