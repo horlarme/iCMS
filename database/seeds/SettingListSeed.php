@@ -17,7 +17,7 @@ class SettingListSeed extends Seeder
                     'value' => 'Application'
                 ],[
         			'name' => 'user',
-        			'value' => 'User'
+        			'value' => 'User Preferences'
         		]
         	]);
     }

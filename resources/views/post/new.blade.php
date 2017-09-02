@@ -5,6 +5,9 @@
     <script type="text/javascript" src="{{ asset('tinymce/tinymce.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('js/main.js')}}"></script>
     <script type="text/javascript" src="{{ asset('fancybox/dist/jquery.fancybox.min.js')}}"></script>
+    <script>
+        {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/lfm.js')) !!}
+    </script>
 @stop
 @section('pageTitle') New Post
 <hr/> @stop
@@ -17,11 +20,11 @@
                     <!-- Post Title-->
                     <div class="col-xs-12 nopadding">
                         <div class="col-xs-3 nopadding">
-                            <input type="button" value="Title:" disabled="" class="btn btntotext align-right" />
+                            <input type="button" value="Title:" disabled="" class="btn btntotext align-right"/>
                         </div>
                         <div class="col-xs-9 nopadding">
                             <input type="text" id="blogtitle" name="blogtitle" class="blogtitle form-control"
-                                   placeholder="Enter post title" value="{{ $title }}" />
+                                   placeholder="Enter post title" value="{{ $title }}"/>
                             <p class="help-block suggestedURL clearfix"></p>
                         </div>
                     </div>
@@ -51,10 +54,27 @@
                             inline: false,
                             plugins: 'fullscreen fullpage hr image layer link lists media paste preview save spellchecker table textcolor emoticons autolink wordcount anchor autolink code colorpicker imagetools visualchars contextmenu responsivefilemanager',
                             theme: 'modern',
-                            toolbar: 'undo | hr bold italic underline superscript subscript textcolor link | alignleft aligncenter alignright alignjustify | paragraph blockquote pre div | code save | lists table link media image imagetools | fullscreen spellchecker| responsivefilemanager',
-                            external_filemanager_path: "{{ asset('/filemanager/resources/filemanager/')}}",
-                            filemanager_title: "File Manager",
-                            external_plugins: {"filemanager": "{{ asset('/filemanager/resources/filemanager/plugin.min.js')}}"},
+                            toolbar: 'undo | hr bold italic underline superscript subscript textcolor link | alignleft aligncenter alignright alignjustify | paragraph blockquote pre div | code save | lists table link media image imagetools | fullscreen spellchecker',
+                            file_browser_callback: function (field_name, url, type, win) {
+                                var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
+                                var y = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
+
+                                var cmsURL = '{{ url(config('lfm.prefix')) }}?field_name=' + field_name;
+                                if (type == 'image') {
+                                    cmsURL = cmsURL + "&type=Images";
+                                } else {
+                                    cmsURL = cmsURL + "&type=Files";
+                                }
+
+                                tinyMCE.activeEditor.windowManager.open({
+                                    file: cmsURL,
+                                    title: 'Filemanager',
+                                    width: x * 0.8,
+                                    height: y * 0.8,
+                                    resizable: "yes",
+                                    close_previous: "no"
+                                });
+                            },
                             menubar: true,
                             height: height
                         });
@@ -66,16 +86,27 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">Blog Image</div>
                         <div class="panel-body">
-                            <img class="blogImageUpload" style="width: 100%;"/>
-                            <input type="hidden" name="blogimage" value=""/>
-                            <input type="file" onchange="uploadImage(this.files[0])"/>
+                            <img class="blogImageUpload" id="blogImageUpload" style="width: 100%;"/>
+                            <input id="thumbnail" type="hidden" name="blogimage">
+                            <div class="form-group col-xs-offset-1 col-xs-5">
+                                <a data-preview="blogImageUpload" class="form-control uploadImage btn btn-primary">
+                                    <i class="fa fa-picture-o"></i> Choose
+                                </a>
+                            </div>
+                            <div class="form-group col-xs-5">
+                                <a data-preview="blogImageUpload" class="form-control uploadImage btn btn-danger">
+                                    <i class="fa fa-ban"></i> Remove
+                                </a>
+                            </div>
+                            <script>
+                                $('.uploadImage').filemanager('image', {prefix: '{{ url(config('lfm.prefix')) }}'});
+                            </script>
                         </div>
                     </div>
 
                     <div class="panel panel-primary">
                         <div class="panel-heading">Category</div>
                         <div class="panel-body">
-
                             @php($categories = \App\Category::all())
                             @foreach($categories as $c)
                                 <input type="radio" name="category" value="{{ $c['id'] }}"/> {{ strtoupper($c['name'])}}

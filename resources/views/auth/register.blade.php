@@ -25,7 +25,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('lastst_name') ? ' has-error' : '' }}">
                             <label for="last_name" class="col-md-4 control-label">Last Name</label>
 
                             <div class="col-md-6">

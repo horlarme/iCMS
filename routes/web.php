@@ -47,3 +47,6 @@ Route::any('dashboard', function (){
     return redirect()
         ->route('dashboard');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Admin\AppSetting;
-use App\Admin\SettingList;
+use App\AppSetting;
+use App\SettingList;
 use Illuminate\Http\Request;
 
 class AppSettingController extends Controller
@@ -15,7 +15,7 @@ class AppSettingController extends Controller
      */
     public function index($setting, Request $request)
     {
-        $setting = \App\Admin\SettingList::where('name', $setting)->firstOrFail();
+        $setting = SettingList::where('name', $setting)->firstOrFail();
         return view('setting.' . $setting->name, compact('setting'));
     }
 
@@ -93,7 +93,7 @@ class AppSettingController extends Controller
     }
 
     public function hasValue($name, SettingList $parent){
-        return (\App\Admin\AppSetting::where('setting_id', $parent->id)->where('name', $name)->first());
+        return (AppSetting::where('setting_id', $parent->id)->where('name', $name)->first());
         }
 
     public function setting($name, SettingList $parent, $value = null){
