@@ -69,7 +69,7 @@
             <li>
                 <a href="#"><i class="fa fa-medkit"></i>Settings<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                @php($settingList = \App\SettingList::all())
+                @php($settingList = \App\Admin\SettingList::all())
                 @foreach($settingList as $setting)
                     <li>
                         <a href="{{route('setting', $setting->name)}}"><i class="fa fa-medkit"></i>{{ $setting->value }}</a>

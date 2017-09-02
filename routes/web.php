@@ -33,7 +33,8 @@ Route::group(['prefix' => '/advance', 'middleware' => 'auth'], function () {
     });
     //Settings
     Route::group(['middleware' => 'auth', 'prefix' => 'setting'], function () {
-        Route::get('/{setting}', 'AppSettingController@view')->name('setting');
+        Route::get('/{setting}', 'AppSettingController@index')->name('setting');
+        Route::post('/{setting}', 'AppSettingController@update')->name('save.setting');
     });
     //Settings
 });
