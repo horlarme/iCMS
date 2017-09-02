@@ -11,7 +11,7 @@ class SettingListSeed extends Seeder
      */
     public function run()
     {
-        DB::table('seettinglist')->insert([
+        DB::table('settinglist')->insert([
         		[
         			'name' => 'app'
         		]
