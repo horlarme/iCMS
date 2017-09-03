@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\roleController;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
@@ -40,6 +39,13 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        /**
+         * Check if the user can register
+         */
+        if(setting('user.register', settingParent('name','app')) == 'false'){
+            echo "<h1>Access to registration page is not allowed, contact the administrator to register you!</h1>";
+            exit;
+        }
         $this->middleware('guest');
     }
 
@@ -96,8 +102,7 @@ class RegisterController extends Controller
         /**
          * Assign a role to the user trying to register
          */
-        $role = new roleController;
-        $role->userRole($user->id, '1');
+        userRole($user->id, '1');
 
         return $user;
     }

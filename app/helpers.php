@@ -14,3 +14,11 @@ if (!function_exists('settingParent')) {
         return \App\Admin\SettingList::where($name, $value)->firstOrFail();
     }
 }
+
+if (!function_exists('userRole')) {
+    function userRole($user_id, $value = null)
+    {
+        $role = new \App\Http\Controllers\roleController();
+        return $role->userRole($user_id);
+    }
+}
