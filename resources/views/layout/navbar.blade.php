@@ -62,7 +62,7 @@
             </li>
 
             <li>
-                <a href="filemanager.html"><i class="fa fa-files-o"></i>File Manager</a>
+                <a href="{{url('filemanager') }}"><i class="fa fa-files-o"></i>File Manager</a>
             </li>
 
             <!--Settings-->

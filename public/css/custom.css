@@ -21,18 +21,22 @@ body {
     background-color: #fff !important;
     padding: 10px;
 }
+
 .text-center {
     text-align: center;
 }
+
 .user-image-back {
     background-color: #8B7BFF;
 }
+
 h5, .h5 {
     font-size: 14px;
     font-weight: 900;
     text-transform: uppercase;
     padding-bottom: 20px;
 }
+
 /*==============================================
     MENU STYLES    
     =============================================*/
@@ -83,16 +87,19 @@ h5, .h5 {
 .sidebar-collapse .nav > li > a:hover {
     background-color: transparent;
 }
-div.row.footer{
+
+div.row.footer {
     padding: 10px;
     z-index: 1000;
     width: 100%;
     margin: 0;
     background: black;
 }
-.nav > li.active > a{
+
+.nav > li.active > a {
     background-color: black;
 }
+
 .sidebar-collapse > .nav > li > a {
     padding: 15px 10px;
 }
@@ -243,20 +250,24 @@ div.row.footer{
         /*! min-height: 1200px; */
 
     }
+
     .navbar-side {
         z-index: 1;
         position: absolute;
         width: 260px;
         float: left;
     }
+
     .navbar {
         border-radius: 0px;
     }
 }
+
 .new-post div[class=col-] {
     margin-right: 0;
     margin-left: 0;
 }
+
 .nopadding {
     padding: 0;
 }
@@ -287,22 +298,61 @@ label[for=user-image] {
     text-shadow: 0 0 0 white;
     background-color: #59ae69;
 }
-.footer{
+
+.footer {
     padding: 15px;
     margin: 0;
     text-align: center;
     color: white;
 }
-.navbar-nav .dropdown li{
+
+.navbar-nav .dropdown li {
     width: 60%;
     float: right;
 }
-.navbar-nav li.user-image-box{
+
+.navbar-nav li.user-image-box {
     width: 40%;
     float: left;
     padding: 10px;
 }
-.navbar-nav .user-image-icon{
+
+.navbar-nav .user-image-icon {
     width: 100%;
     margin-top: -5px;
+}
+
+/**
+* Loading Bar
+ */
+.loading {
+    min-width: 200px;
+    position: fixed;
+    top: -55px;
+    right: 10px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    z-index: 99999;
+    text-align: left;
+    border-radius: 5px;
+    transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+}
+
+.loading > .closeButton {
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    font-family: FontAwesome;
+    color: red;
+}
+
+.loading > .closeButton:before {
+    content: "\f05e";
+}
+
+.loading > .closeButton:hover {
+    color: white;
 }

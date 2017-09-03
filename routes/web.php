@@ -18,21 +18,21 @@ Route::group(['prefix' => '/advance', 'middleware' => 'auth'], function () {
         Route::get('', 'UserController@index')->name('profile');
     });
 
-    Route::group(['middleware' => 'auth', 'prefix' => 'category'], function () {
+    Route::group(['prefix' => 'category'], function () {
         Route::get('', 'CategoryController@index')->name('categories');
         Route::get('/{name}', 'CategoryController@view')->name('category.view');
         Route::get('/edit/{name}', 'CategoryController@edit')->name('category.edit');
         Route::get('/delete/{name}', 'CategoryController@edit')->name('category.delete');
     });
 
-    Route::group(['middleware' => 'auth', 'prefix' => 'post'], function () {
+    Route::group(['prefix' => 'post'], function () {
         Route::get('/new', 'PostController@create')->name('post.new');
         Route::get('/trash', 'PostController@new')->name('post.deleted');
         Route::get('/scheduled', 'PostController@new')->name('post.scheduled');
         Route::get('/published', 'PostController@new')->name('post.published');
     });
     //Settings
-    Route::group(['middleware' => 'auth', 'prefix' => 'setting'], function () {
+    Route::group(['prefix' => 'setting'], function () {
         Route::get('/{setting}', 'AppSettingController@index')->name('setting');
         Route::post('/{setting}', 'AppSettingController@update')->name('save.setting');
     });
@@ -47,6 +47,3 @@ Route::any('dashboard', function (){
     return redirect()
         ->route('dashboard');
 });
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

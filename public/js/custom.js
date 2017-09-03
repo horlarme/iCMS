@@ -54,4 +54,63 @@ $('document').ready(function () {
         nh = $('#page-wrapper #page-inner').position();
     $('.fileManagerFrame').css('height', (h - nh.top));
     $('.theWebSite').css('height', (h - nh.top));
+    /**
+     * Hide Loading Bar when the button is clicked
+     */
+    $('.loading').click(function () {
+        hideLoading();
+    });
 });
+
+/**
+ * Function hideLoading
+ * Hide tbe loading bar by setting the top position of the element to -1000px
+ */
+function hideLoading() {
+    $('.loading').css({'top': '-1000px'});
+}
+/**
+ * Function showLoading
+ * Show the loading bar
+ * @param $text The text to be shown in the bar
+ */
+function showLoading($text = "Loading...", status = "loading") {
+
+    var loading = $('.loading');
+
+    loading
+        .css({'top': '55px'})
+        .find('.content')
+        .text($text);
+
+    /**
+     * Generating the class name for the loading
+     */
+    var className;
+    switch (status) {
+        case 'loading':
+            loading.addClass('bg-primary')
+                .removeClass('bg-danger')
+                .removeClass('bg-success');
+            break;
+        case 'error':
+            loading.addClass('bg-danger')
+                .removeClass('bg-primary')
+                .removeClass('bg-success');
+            break;
+        default:
+            loading.addClass('bg-success')
+                .removeClass('bg-primary')
+                .removeClass('bg-danger');
+            break;
+    }
+
+
+    /**
+     * The loading bar cloaes after 3 seconds
+     */
+    setTimeout(function () {
+            hideLoading()
+        }, 5000
+    );
+}

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="csrf_token" content="{{csrf_token()}}" />
+    <meta name="csrf_token" content="{{csrf_token()}}"/>
     <title>{{config('app.name')}} | @yield('title')</title>
     <!-- BOOTSTRAP STYLES-->
     <link href="{{asset('css/bootstrap.css') }}" rel="stylesheet"/>
@@ -19,6 +19,11 @@
     <script src="{{asset('js/jquery-1.10.2.js')}}"></script>
     <!-- BOOTSTRAP SCRIPTS -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    @php($settingValue = new \App\Http\Controllers\AppSettingController)
+    <meta name="description"
+          content="{{$settingValue->setting('description', \App\Admin\SettingList::where('name', 'app')->firstOrFail())}}"/>
+    <meta name="keywords"
+          content="{{$settingValue->setting('keywords', \App\Admin\SettingList::where('name', 'app')->firstOrFail())}}"/>
 
     @yield('others')
 </head>
@@ -32,9 +37,9 @@
     @endif
 
     <div id="page-wrapper"
-    @if(Auth::guest())
-        style="margin: 0;"
-        @endif >
+         @if(Auth::guest())
+         style="margin: 0;"
+            @endif >
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
@@ -50,11 +55,14 @@
     <!-- /. PAGE WRAPPER  -->
 </div>
 
+<div class="loading bg-danger">
+    <div class="closeButton"></div>
+    <div class="content"></div>
+</div>
+
 <!-- METISMENU SCRIPTS -->
 <script src="{{asset('js/jquery.metisMenu.js')}}"></script>
 <!-- CUSTOM SCRIPTS -->
 <script src="{{asset('js/custom.js')}}"></script>
-
-
 </body>
 </html>

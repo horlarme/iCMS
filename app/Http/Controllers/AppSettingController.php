@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\AppSetting;
-use App\SettingList;
+use App\Admin\SettingList;
 use Illuminate\Http\Request;
 
 class AppSettingController extends Controller
@@ -32,7 +32,7 @@ class AppSettingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -43,7 +43,7 @@ class AppSettingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\AppSetting  $appSetting
+     * @param  \App\AppSetting $appSetting
      * @return \Illuminate\Http\Response
      */
     public function show(AppSetting $appSetting)
@@ -54,7 +54,7 @@ class AppSettingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\AppSetting  $appSetting
+     * @param  \App\AppSetting $appSetting
      * @return \Illuminate\Http\Response
      */
     public function edit(AppSetting $appSetting)
@@ -65,8 +65,8 @@ class AppSettingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Admin\AppSetting  $appSetting
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Admin\AppSetting $appSetting
      * @return \Illuminate\Http\Response
      */
     public function update($setting, Request $request, AppSetting $appSetting)
@@ -80,53 +80,55 @@ class AppSettingController extends Controller
         $parent = SettingList::where('name', $setting)->firstOrFail();
 
         /**
-        * This checks if the value is already in the database
-        * And if it returns true, then we only need to update and not create
-        */
+         * This checks if the value is already in the database
+         * And if it returns true, then we only need to update and not create
+         */
         // var_dump($this->hasValue($name, $parent));exit;
-        if($this->hasValue($name, $parent) != null || false){
+        if ($this->hasValue($name, $parent) != null || false) {
             $this->setting($name, $parent, $value);
-        }else{
+        } else {
             $this->createSetting($name, $parent, $value);
         }
-            return json_encode(['response' => 'true']);
+        return json_encode(['response' => 'true']);
     }
 
-    public function hasValue($name, SettingList $parent){
+    public function hasValue($name, SettingList $parent)
+    {
         return (AppSetting::where('setting_id', $parent->id)->where('name', $name)->first());
-        }
+    }
 
-    public function setting($name, SettingList $parent, $value = null){
+    public function setting($name, SettingList $parent, $value = null)
+    {
         //If the value is null, then return the value of the specified name
-        if(is_null($value)){
-            if($this->hasValue($name, $parent) != null || false){
+        if (is_null($value)) {
+            if ($this->hasValue($name, $parent) != null || false) {
                 return $this->hasValue($name, $parent)->value;
-            }else{
+            } else {
                 return false;
             }
-        }
-        //Else, update the setting with the value specified
-        else{
+        } //Else, update the setting with the value specified
+        else {
             //If the vlaue already ecist in the database
             //We will need to update the value
-                return AppSetting::where('name', $name)
-                        ->where('setting_id', $parent->id)
-                        ->update(['value' => $value]);
+            return AppSetting::where('name', $name)
+                ->where('setting_id', $parent->id)
+                ->update(['value' => $value]);
         }
     }
 
-    public function createSetting($name, SettingList $parent, $value){
+    public function createSetting($name, SettingList $parent, $value)
+    {
         return AppSetting::create([
-                            'name' => $name,
-                            'setting_id' => $parent->id,
-                            'value' => $value
-                            ]);
+            'name' => $name,
+            'setting_id' => $parent->id,
+            'value' => $value
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\AppSetting  $appSetting
+     * @param  \App\AppSetting $appSetting
      * @return \Illuminate\Http\Response
      */
     public function destroy(AppSetting $appSetting)

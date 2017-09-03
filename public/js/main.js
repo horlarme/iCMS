@@ -31,53 +31,6 @@ function checkDescription() {
     }
 }
 
-/**
- * Blog Post Image upload function
- */
-function uploadImage(image) {
-    //Checking to see if the function is called
-    console.log("Function Called...");
-    //Creating a form field to send the file
-    var form = new FormData();
-    //Adding the image to the form to be uploaded
-    //image file name = image
-    form.append('image', image);
-    //adding a query to the form to tell the script
-    //we are uploading an image not posting yet!
-    form.append('action', 'uploadImage');
-
-    //Configurations to be used for the image
-    $imageBox = $("img[class=blogImageUpload]");
-    $imageFormValue = $('input[name=blogimage]');
-
-    //AJAX
-    //Uploading the image file to the server
-    $.ajax({
-        contentType: false,
-        processData: false,
-        url: 'savepost.php',
-        type: 'POST',
-        data: form,
-        success: function (res) {
-            if (res.response == "true" || res.response == true) {
-                console.log(res.response);
-                //Configuring values
-                imageLocation = res.message;
-                //Updating the image box to load the new uploaded image
-                $imageBox.attr('src', imageLocation);
-                $imageFormValue.attr('value', imageLocation)
-            } else {
-                alert("The following errors occur: " + res.message);
-            }
-        },
-        error: function (err) {
-            alert("The following errors occur: " + res.message);
-        }
-    });
-
-}
-
-
 // Functions
 function showScheduleForm() {
     $('.schedulePost').css('display', 'block');
