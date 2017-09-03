@@ -19,11 +19,10 @@
     <script src="{{asset('js/jquery-1.10.2.js')}}"></script>
     <!-- BOOTSTRAP SCRIPTS -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    @php($settingValue = new \App\Http\Controllers\AppSettingController)
     <meta name="description"
-          content="{{$settingValue->setting('description', \App\Admin\SettingList::where('name', 'app')->firstOrFail())}}"/>
+          content="{{setting('description', settingParent('name', 'app'))}}"/>
     <meta name="keywords"
-          content="{{$settingValue->setting('keywords', \App\Admin\SettingList::where('name', 'app')->firstOrFail())}}"/>
+          content="{{setting('keywords', settingParent('name', 'app'))}}"/>
 
     @yield('others')
 </head>

@@ -15,7 +15,6 @@
             <p class="text-info">Every Setting of this page is updated automatically when the user leave the box.</p>
 
             <form action="{{route('save.setting', $setting->name)}}" class="setting">
-                @php($settingValues = new \App\Http\Controllers\AppSettingController)
 
                 <div class="clearfix">
                     <h4><strong>Web Site Information</strong></h4>
@@ -25,7 +24,7 @@
                         <label class="col-md-2">Name:</label>
                         <div class="col-md-10">
                             <input type="text" name="name" class="update form-control"
-                                   value="{{ $settingValues->setting('name', $setting) }}"/>
+                                   value="{{ setting('name', $setting) }}"/>
                             <p class="help-block">This will be the name the website displays.</p>
                         </div>
                     </div>
@@ -34,7 +33,7 @@
                         <label class="col-md-2">Description:</label>
                         <div class="col-md-10">
                             <textarea name="description" class="update form-control"
-                                      rows="3">{{ $settingValues->setting('description', $setting) }}</textarea>
+                                      rows="3">{{ setting('description', $setting) }}</textarea>
                             <p class="help-block">This describe the website for search engines. It is advised to be kept
                                 at maximum of 250 characters.</p>
                         </div>
@@ -45,7 +44,7 @@
                         <label class="col-md-2">Keywords:</label>
                         <div class="col-md-10">
                             <input type="text" name="keywords" class="update form-control"
-                                   value="{{ $settingValues->setting('keywords', $setting) }}"/>
+                                   value="{{ setting('keywords', $setting) }}"/>
                             <p class="help-block">Each keyword should be comma separated and should.</p>
                         </div>
                     </div>
@@ -60,10 +59,10 @@
                         <label class="col-md-2">Registration:</label>
                         <div class="col-md-10">
                             <select name="user.register" class="update form-control">
-                                <option value="true" {{$settingValues->setting('user.register', $setting) === 'true' ? 'selected' : ''}}>
+                                <option value="true" {{setting('user.register', $setting) === 'true' ? 'selected' : ''}}>
                                     Yes
                                 </option>
-                                <option value="false" {{$settingValues->setting('user.register', $setting) === 'true' ? '' : 'selected'}}>
+                                <option value="false" {{setting('user.register', $setting) === 'true' ? '' : 'selected'}}>
                                     No
                                 </option>
                             </select>
@@ -79,10 +78,10 @@
                     <label class="col-md-2">Make your application not visible to search engines</label>
                     <div class="col-md-10">
                         <select name="search" class="update form-control">
-                            <option value="true" {{$settingValues->setting('search', $setting) === 'true' ? 'selected' : ''}}>
+                            <option value="true" {{setting('search', $setting) === 'true' ? 'selected' : ''}}>
                                 Yes
                             </option>
-                            <option value="false" {{$settingValues->setting('search', $setting) === 'true' ? '' : 'selected'}}>
+                            <option value="false" {{setting('search', $setting) === 'true' ? '' : 'selected'}}>
                                 No
                             </option>
                         </select>
