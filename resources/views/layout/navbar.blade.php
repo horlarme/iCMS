@@ -72,16 +72,8 @@
                             <i class="fi-clipboard-pencil"></i>New Page</a>
                     </li>
                     <li>
-                        <a href="{{ route('page.published')}}">
-                            <i class="fi-clipboard"></i>Published</a>
-                    </li>
-                    <li>
                         <a href="{{ route('page.deleted')}}">
                             <i class="fa fa-trash-o"></i>Deleted</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('page.scheduled')}}">
-                            <i class="fi-clock"></i>Scheduled</a>
                     </li>
                 </ul>
             </li>

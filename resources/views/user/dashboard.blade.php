@@ -1,6 +1,6 @@
 @extends('layout.app')
 @section('title') Dashboard @stop
-
+@section('pageHeader') My Dashboard @stop
 @section('content')
     <div class="row">
         <div class="col-md-12">

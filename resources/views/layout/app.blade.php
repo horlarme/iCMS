@@ -41,9 +41,20 @@
             @endif >
         <div id="page-inner">
             <div class="row">
-                <div class="col-md-12">
-                    {{--The header of the page--}}
-                    <h2>@yield('pageTitle')</h2>
+                <div class="col-md-12 clearfix">
+
+                    <div class="col-xs-12 col-sm-12 col-md-9">
+                        {{--The header of the page--}}
+                        <h2>@yield('pageHeader')</h2>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <h2>@yield('pageAction')</h2>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="help-block">
+                        @yield('pageText')
+                    </div>
+                    <hr/>
                 </div>
             </div>
             {{--The content of the page--}}

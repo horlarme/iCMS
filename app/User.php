@@ -46,10 +46,10 @@ class User extends Authenticatable
     }
 
 
-    public function author()
-    {
-        return $this->belongsTo('App\Admin\Post', 'author');
-    }
+//    public function author()
+//    {
+//        return $this->belongsTo('App\Admin\Post', 'author');
+//    }
 
     /**
      * Getting the role of a user

@@ -9,8 +9,7 @@
         {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/lfm.js')) !!}
     </script>
 @stop
-@section('pageTitle') New Post
-<hr/> @stop
+@section('pageHeader') Create A New Post Content @stop
 @section('content')
     <div class="row">
         <div class="col-md-12">

@@ -9,6 +9,9 @@
         {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/lfm.js')) !!}
     </script>
 @stop
+@section('pageText')
+    <span class="text-danger">The contents of the website (posts, pages and users) can be edited, removed or manipulated from this page. Proceed with cautions!</span>
+    @stop
 @section('content')
     <div class="row">
         <div class="col-md-12">

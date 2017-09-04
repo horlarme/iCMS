@@ -18,6 +18,7 @@ Route::group(['prefix' => '/advance', 'middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'profile'], function () {
         Route::get('', 'UserController@index')->name('profile');
+        Route::get('/edit', 'UserController@edit')->name('profile.edit');
     });
 
     //Category
@@ -37,8 +38,6 @@ Route::group(['prefix' => '/advance', 'middleware' => 'auth'], function () {
         Route::get('/{name}', 'PagesController@view')->name('page.view');
         Route::get('/new', 'PagesController@new')->name('page.new');
         Route::get('/deleted', 'PagesController@deleted')->name('page.deleted');
-        Route::get('/published', 'PagesController@deleted')->name('page.published');
-        Route::get('/scheduled', 'PagesController@deleted')->name('page.scheduled');
         Route::get('/{name}?action=edit', 'PagesController@edit')->name('page.edit');
         Route::get('/{name}?action=delete', 'PagesController@edit')->name('page.delete');
     });

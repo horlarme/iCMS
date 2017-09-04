@@ -7,11 +7,10 @@
     <script type="text/javascript" src="{{ asset('fancybox/dist/jquery.fancybox.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('js/settings.js')}}"></script>
 @stop
-@section('pageTitle') {{ ucwords($setting->value) }}
-<hr/> @stop
+@section('pageHeader') {{ ucwords($setting->value) }} @stop
 @section('content')
     <div class="row">
-        <div class="container">    
+        <div class="col-xs-12">
             <p class="text-info">Every Setting of this page is updated automatically when the user leave the box.</p>
 
             <form action="{{route('save.setting', $setting->name)}}" class="setting">

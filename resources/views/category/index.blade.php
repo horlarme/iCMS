@@ -1,6 +1,11 @@
 @extends('layout.app')
 @section('title') Category List @stop
-@section('pageTitle') Category List <hr /> @stop
+@section('pageHeader') All Categories @stop
+@section('pageAction')
+    <a href="{{route('category.new')}}" class="col-xs-12 btn btn-success">
+        <i class="fi-clipboard-pencil"></i> Create Category</a>
+@stop
+@section('pageText') This page list all the categories available on the site both the deleted and the published. @stop
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -8,7 +13,6 @@
                 <table class="table table-striped table-bordered table-hover">
                     <thead class="thead-inverse">
                     <tr>
-                        <th>ID</th>
                         <th>Name</th>
                         <th>Title</th>
                         <th>Icon</th>
@@ -19,7 +23,6 @@
                     {{-- {{dd($categories)}} --}}
                     @foreach($categories as $category)
                     <tr>
-                        <td>{{ ucwords($category->id) }}</td>
                         <td>{{ ucwords($category->name) }}</td>
                         <td>{{ ucwords($category->title) }}</td>
                         <td>{{ strtolower($category->icon) }}</td>
