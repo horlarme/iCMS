@@ -62,19 +62,20 @@
             </li>
 
             <li>
-                <a href="{{url('filemanager') }}"><i class="fa fa-files-o"></i>File Manager</a>
+                <a href="{{route('storage') }}"><i class="fa fa-files-o"></i>File Manager</a>
             </li>
 
             <!--Settings-->
             <li>
                 <a href="#"><i class="fa fa-medkit"></i>Settings<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
-                @php($settingList = \App\Admin\SettingList::all())
-                @foreach($settingList as $setting)
-                    <li>
-                        <a href="{{route('setting', $setting->name)}}"><i class="fa fa-medkit"></i>{{ $setting->value }}</a>
-                    </li>
-                @endforeach
+                    @php($settingList = \App\Admin\SettingList::all())
+                    @foreach($settingList as $setting)
+                        <li>
+                            <a href="{{route('setting', $setting->name)}}"><i
+                                        class="fa fa-medkit"></i>{{ $setting->value }}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </li>
             <!--Settings-->
@@ -82,7 +83,7 @@
 
         <div class="row footer">
             <div class="footer">
-                &copy; {{date('Y')}}, {{env('APP_NAME')}}
+                &copy; {{date('Y')}}, {{strtoupper(setting('name', settingParent('name', 'app')))}}
             </div>
         </div>
     </div>

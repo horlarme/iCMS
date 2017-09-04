@@ -7,7 +7,7 @@
     <title>{{config('app.name')}} | @yield('title')</title>
     <!-- BOOTSTRAP STYLES-->
     <link href="{{asset('css/bootstrap.css') }}" rel="stylesheet"/>
-    <link href="{{asset('img/favicon.png') }}" rel="icon"/>
+    <link href="{{asset('storage/favicon.png') }}" rel="icon"/>
     <!-- FONTAWESOME STYLES-->
     <link href="{{asset('css/font-awesome.css') }}" rel="stylesheet"/>
     <link href="{{asset('css/foundation-icons.css') }}" rel="stylesheet"/>

@@ -14,6 +14,8 @@ Route::group(['prefix' => '/advance', 'middleware' => 'auth'], function () {
 
     Route::get('', 'PageController@index')->name('dashboard');
 
+    Route::get('storage', 'PageController@storage')->name('storage');
+
     Route::group(['middleware' => 'auth', 'prefix' => 'user'], function () {
         Route::get('', 'UserController@index')->name('profile');
     });

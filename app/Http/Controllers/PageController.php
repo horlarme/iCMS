@@ -15,4 +15,8 @@ class PageController extends Controller
     {
         return view('user.dashboard');
     }
+
+    public function storage(){
+        return view('storage');
+    }
 }
