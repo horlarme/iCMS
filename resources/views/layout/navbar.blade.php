@@ -2,9 +2,9 @@
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
 
-            {{-- <li class="text-center user-image-back"> --}}
-            {{-- <img src="{{asset('img/user-image.jpg')}}" class="img-responsive"/> --}}
-            {{-- </li> --}}
+             <li class="text-center user-image-back">
+             <img src="{{asset('storage/user-image.jpg')}}" class="img-responsive"/>
+             </li>
 
             <li>
                 <a href="{{route('dashboard')}}"><i class="fa fa-desktop "></i>Dashboard</a>
