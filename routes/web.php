@@ -16,7 +16,7 @@ Route::group(['prefix' => '/advance', 'middleware' => 'auth'], function () {
 
     Route::get('storage', 'PageController@storage')->name('storage');
 
-    Route::group(['middleware' => 'auth', 'prefix' => 'user'], function () {
+    Route::group(['prefix' => 'profile'], function () {
         Route::get('', 'UserController@index')->name('profile');
     });
 
@@ -33,14 +33,14 @@ Route::group(['prefix' => '/advance', 'middleware' => 'auth'], function () {
 
     //Pages
     Route::group(['prefix' => 'page'], function () {
-        Route::get('', 'PageController@index')->name('pages');
-        Route::get('/{name}', 'PageController@view')->name('page.view');
-        Route::get('/new', 'PageController@new')->name('page.new');
-        Route::get('/deleted', 'PageController@deleted')->name('page.deleted');
-        Route::get('/published', 'PageController@deleted')->name('page.published');
-        Route::get('/scheduled', 'PageController@deleted')->name('page.scheduled');
-        Route::get('/{name}?action=edit', 'PageController@edit')->name('page.edit');
-        Route::get('/{name}?action=delete', 'PageController@edit')->name('page.delete');
+        Route::get('', 'PagesController@index')->name('pages');
+        Route::get('/{name}', 'PagesController@view')->name('page.view');
+        Route::get('/new', 'PagesController@new')->name('page.new');
+        Route::get('/deleted', 'PagesController@deleted')->name('page.deleted');
+        Route::get('/published', 'PagesController@deleted')->name('page.published');
+        Route::get('/scheduled', 'PagesController@deleted')->name('page.scheduled');
+        Route::get('/{name}?action=edit', 'PagesController@edit')->name('page.edit');
+        Route::get('/{name}?action=delete', 'PagesController@edit')->name('page.delete');
     });
     //Pages
 

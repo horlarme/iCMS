@@ -25,11 +25,6 @@
 </head>
 <body>
   <div class="container-fluid" id="wrapper">
-    <div class="panel panel-primary hidden-xs">
-      <div class="panel-heading">
-        <h1 class="panel-title">{{ trans('laravel-filemanager::lfm.title-panel') }}</h1>
-      </div>
-    </div>
     <div class="row">
       <div class="col-sm-2 hidden-xs">
         <div id="tree"></div>

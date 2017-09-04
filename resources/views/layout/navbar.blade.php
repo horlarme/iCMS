@@ -11,7 +11,7 @@
             </li>
 
             <li>
-                <a href="profile.html"><i class="fa fa-user"></i>My Profile</a>
+                <a href="{{route('profile')}}"><i class="fa fa-user"></i>My Profile</a>
             </li>
 
             <!--Categories-->
