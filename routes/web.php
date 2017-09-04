@@ -20,19 +20,39 @@ Route::group(['prefix' => '/advance', 'middleware' => 'auth'], function () {
         Route::get('', 'UserController@index')->name('profile');
     });
 
+    //Category
     Route::group(['prefix' => 'category'], function () {
         Route::get('', 'CategoryController@index')->name('categories');
         Route::get('/{name}', 'CategoryController@view')->name('category.view');
-        Route::get('/edit/{name}', 'CategoryController@edit')->name('category.edit');
-        Route::get('/delete/{name}', 'CategoryController@edit')->name('category.delete');
+        Route::get('/new', 'CategoryController@new')->name('category.new');
+        Route::get('/deleted', 'CategoryController@deleted')->name('category.deleted');
+        Route::get('/{name}?action=edit', 'CategoryController@edit')->name('category.edit');
+        Route::get('/{name}?action=delete', 'CategoryController@edit')->name('category.delete');
     });
+    //Category
 
+    //Pages
+    Route::group(['prefix' => 'page'], function () {
+        Route::get('', 'PageController@index')->name('pages');
+        Route::get('/{name}', 'PageController@view')->name('page.view');
+        Route::get('/new', 'PageController@new')->name('page.new');
+        Route::get('/deleted', 'PageController@deleted')->name('page.deleted');
+        Route::get('/published', 'PageController@deleted')->name('page.published');
+        Route::get('/scheduled', 'PageController@deleted')->name('page.scheduled');
+        Route::get('/{name}?action=edit', 'PageController@edit')->name('page.edit');
+        Route::get('/{name}?action=delete', 'PageController@edit')->name('page.delete');
+    });
+    //Pages
+
+    //Post
     Route::group(['prefix' => 'post'], function () {
         Route::get('/new', 'PostController@create')->name('post.new');
         Route::get('/trash', 'PostController@new')->name('post.deleted');
         Route::get('/scheduled', 'PostController@new')->name('post.scheduled');
         Route::get('/published', 'PostController@new')->name('post.published');
     });
+    //Post
+
     //Settings
     Route::group(['prefix' => 'setting'], function () {
         Route::get('/{setting}', 'AppSettingController@index')->name('setting');

@@ -2,9 +2,9 @@
     <div class="sidebar-collapse">
         <ul class="nav" id="main-menu">
 
-             {{--<li class="text-center user-image-back">--}}
-             {{--<img src="{{asset('storage/avatar-male.png')}}" class="img-responsive"/>--}}
-             {{--</li>--}}
+            {{--<li class="text-center user-image-back">--}}
+            {{--<img src="{{asset('storage/avatar-male.png')}}" class="img-responsive"/>--}}
+            {{--</li>--}}
 
             <li>
                 <a href="{{route('dashboard')}}"><i class="fa fa-desktop "></i>Dashboard</a>
@@ -15,20 +15,22 @@
             </li>
 
             <!--Categories-->
-            @php($categories = App\Category::all())
             <li>
                 <a href="#"><i class="fa fa-list"></i>Categories<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
                         <a href="{{route('categories')}}"><i class="fa fa-list"></i>All</a>
                     </li>
-                    @foreach ($categories as $category)
-                        <li title="{{ $category->title }}">
-                            <a href="{{route('category.view', ucwords($category->name))}}">
-                                <i class="fi {{ $category->icon }}"></i>{{ ucwords($category->name)}}
-                            </a>
-                        </li>
-                    @endforeach
+                    <li>
+                        <a href="{{route('category.new')}}">
+                            <i class="fi fi-clipboard-pencil"></i>New
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('category.deleted')}}">
+                            <i class="fa fa-trash-o"></i>Deleted
+                        </a>
+                    </li>
                 </ul>
             </li>
             <!--Categories-->
@@ -57,9 +59,33 @@
             </li>
             <!--Posts-->
 
+            <!--Pages-->
             <li>
-                <a href="pages.html"><i class="fa fa-book"></i>Pages</a>
+                <a href="#"><i class="fa fa-book"></i>Pages<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        <a href="{{route('pages')}}">
+                            <i class="fa fa-list"></i>All Pages</a>
+                    </li>
+                    <li>
+                        <a href="{{route('page.new')}}">
+                            <i class="fi-clipboard-pencil"></i>New Page</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('page.published')}}">
+                            <i class="fi-clipboard"></i>Published</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('page.deleted')}}">
+                            <i class="fa fa-trash-o"></i>Deleted</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('page.scheduled')}}">
+                            <i class="fi-clock"></i>Scheduled</a>
+                    </li>
+                </ul>
             </li>
+            <!--Pages-->
 
             <li>
                 <a href="{{route('storage') }}"><i class="fa fa-files-o"></i>File Manager</a>
