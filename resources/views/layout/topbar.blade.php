@@ -17,7 +17,7 @@
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-menu-left" style="width: 100%;">
                             <li class="user-image-box">
-                                <img src="{{ asset('storage/' . Auth::user()->image)}}" class="user-image-icon">
+                                <img src="{{ asset('storage/' . Auth::user()->image )}}" class="user-image-icon">
                             </li>
                             <li><a href="{{ route('profile') }}">My Profile</a></li>
                             <div class="divider"></div>
@@ -31,7 +31,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="{{route('dashboard')}}">See Website</a></li>
+                    <li><a href="{{url('')}}">See Website</a></li>
                 @else
                     <li><a href="{{route('login')}}">Login</a></li>
                     <li><a href="{{route('register')}}">Register</a></li>

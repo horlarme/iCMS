@@ -36,7 +36,7 @@
                         <label class="col-md-2">Description:</label>
                         <div class="col-md-10">
                             <textarea name="description" class="update form-control"
-                                      rows="3">{{ setting('description', $setting) }}</textarea>
+                                      rows="3" maxlength="250">{{ setting('description', $setting) }}</textarea>
                             <p class="help-block">This describe the website for search engines. It is advised to be kept
                                 at maximum of 250 characters.</p>
                         </div>
