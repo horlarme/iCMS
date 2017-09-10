@@ -2,6 +2,15 @@
 @section('title') Create New Post @stop
 @section('others')
     <link rel='stylesheet' href="{{ asset('fancybox/dist/jquery.fancybox.min.css')}}">
+    <!-- Tags Input -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css"/>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+    <!-- Tags Input -->
+    <!-- Date Picker-->
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css"/>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <!-- Date Picker-->
     <script type="text/javascript" src="{{ asset('tinymce/tinymce.min.js')}}"></script>
     <script type="text/javascript" src="{{ asset('js/main.js')}}"></script>
     <script type="text/javascript" src="{{ asset('fancybox/dist/jquery.fancybox.min.js')}}"></script>
@@ -13,27 +22,39 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <form action="post-create.html" class="new-post" method="POST" enctype="multipart/form-data">
-
+            @if(session()->has('message'))
+                <h4 class="{{session()->get('message.type')}}">{{session()->get('message.content')}}</h4>
+                @endif
+            @if($errors->any())
+                <ul class="alert alert-danger">
+                    <h4>Please go through the following errors:</h4>
+                    @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            @endif
+            <form action="{{route('post.create')}}" class="new-post" method="post" enctype="multipart/form-data">
+                {{csrf_field()}}
                 <div class="col-xs-12 col-md-8 form-group form-horizontal">
                     <!-- Post Title-->
-                    <div class="col-xs-12 nopadding">
+                    <div class="col-xs-12 nopadding <?php echo ($errors->has('title')) ? 'has-error' : ""?>">
                         <div class="col-xs-3 nopadding">
                             <input type="button" value="Title:" disabled="" class="btn btntotext align-right"/>
                         </div>
                         <div class="col-xs-9 nopadding">
-                            <input type="text" id="blogtitle" name="blogtitle" class="blogtitle form-control"
-                                   placeholder="Enter post title" value="{{ $title }}"/>
+                            <input type="text" id="blogtitle" name="title"
+                                   class="blogtitle form-control"
+                                   placeholder="Enter post title" value="{{ old('title') }}"/>
                             <p class="help-block suggestedURL clearfix"></p>
                         </div>
                     </div>
                     <!-- Post Description-->
-                    <div class="col-xs-12 nopadding">
+                    <div class="col-xs-12 nopadding <?php echo ($errors->has('description')) ? 'has-error' : ""?>">
                         <div class="col-xs-3 nopadding">
                             <input type="button" value="Description:" disabled="" class="btn btntotext align-right"/>
                         </div>
                         <div class="col-xs-9 nopadding">
-                            <textarea name="blogdescription" rows='6' onkeyup="checkDescription()"
+                            <textarea name="description" rows='6' maxlength="250" onkeyup="checkDescription()"
                                       class="form-control blogdescription"
                                       placeholder="Describe your post in a few lines..."></textarea>
                             <p class="help-block clearfix blogdescrip"></p>
@@ -42,7 +63,7 @@
                     <!--Form Input/Box-->
                     <!--Form Input/Box-->
                     <div class="col-xs-12 nopadding">
-                        <textarea class="editor" name="blogcontent"></textarea>
+                        <textarea class="editor" name="content"></textarea>
                     </div>
                     <script type="text/javascript">
                         //Configuration for the editor
@@ -85,15 +106,17 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">Blog Image</div>
                         <div class="panel-body">
-                            <img class="blogImageUpload" id="blogImageUpload" style="width: 100%;"/>
-                            <input id="thumbnail" type="hidden" name="blogimage">
+                            <img class="blogImageUpload img img-responsive thumbnail" id="blogImageUpload"
+                                 style="margin-bottom: 15px;width: 100%;"/>
+                            <input id="thumbnail" type="hidden" name="image">
                             <div class="form-group col-xs-offset-1 col-xs-5">
-                                <a data-preview="blogImageUpload" class="form-control uploadImage btn btn-primary">
+                                <a data-preview="blogImageUpload" data-input="thumbnail"
+                                   class="form-control uploadImage btn btn-primary">
                                     <i class="fa fa-picture-o"></i> Choose
                                 </a>
                             </div>
                             <div class="form-group col-xs-5">
-                                <a data-preview="blogImageUpload" class="form-control uploadImage btn btn-danger">
+                                <a class="form-control removeUploadImage btn btn-danger">
                                     <i class="fa fa-ban"></i> Remove
                                 </a>
                             </div>
@@ -105,12 +128,14 @@
 
                     <div class="panel panel-primary">
                         <div class="panel-heading">Category</div>
-                        <div class="panel-body">
+                        <div class="panel-body <?php echo ($errors->has('title')) ? 'has-error' : ""?>">
                             @php($categories = \App\Category::all())
                             @foreach($categories as $c)
                                 <input type="radio" name="category" value="{{ $c['id'] }}"/> {{ strtoupper($c['name'])}}
                                 <br/>
                             @endforeach
+                            <p class="help-block text-warning">If none is selected, then UNDEFINED will be used
+                                instead.</p>
                         </div>
                     </div>
 
@@ -118,9 +143,20 @@
                         <div class="panel-heading">Tags</div>
                         <div class="panel-body">
                             <div class="form-group">
-                                <input type="text" name="tag" placeholder="Separate Tags with comma ','"
+                                <input type="text" name="tag" data-role="tagsinput"
+                                       placeholder="Separate Tags with comma ','"
                                        class="blogTag form-control">
                             </div>
+                            <style>
+                                .bootstrap-tagsinput {
+                                    width: 100%;
+                                }
+                            </style>
+                            <script>
+                                $(document).ready(function () {
+                                    $('.bootstrap-tagsinput input').addClass('form-control');
+                                })
+                            </script>
                         </div>
                         <div class="panel-footer">
                             Don't leave spaces after each comma and don't leave a comma as the last character...
@@ -156,11 +192,7 @@
                 </div>
 
                 <div class="clearfix"></div>
+            </form>
         </div>
-
-
-        <div class="clearfix"></div>
-        </form>
-    </div>
     </div>
 @stop

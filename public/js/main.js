@@ -1,7 +1,7 @@
 $('document').ready(function () {
 
     //Post URL Address Suggester
-    $('input[name=blogtitle]').on('keyup', function () {
+    $('input[name=title]').on('keyup', function () {
         //Getting the value from post title
         $title = $('.blogtitle').val();
         //Replacing the white space with an underscore

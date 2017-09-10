@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/advance';
 
     protected $fillable = ['first_name', 'last_name', 'email', 'password', 'website'];
 

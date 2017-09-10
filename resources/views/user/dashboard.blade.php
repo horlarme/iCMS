@@ -43,42 +43,6 @@
                             <a href="post-delete.html" class="btn btn-danger"><i class="fa fa-trash-o"></i>Delete</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>201</td>
-                        <td>This Is A Simple Post</td>
-                        <td>Programming</td>
-                        <td>
-                            <a href="post-edit.html" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</a>
-                            <a href="post-delete.html" class="btn btn-danger"><i class="fa fa-trash-o"></i>Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>201</td>
-                        <td>This Is A Simple Post</td>
-                        <td>Programming</td>
-                        <td>
-                            <a href="post-edit.html" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</a>
-                            <a href="post-delete.html" class="btn btn-danger"><i class="fa fa-trash-o"></i>Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>201</td>
-                        <td>This Is A Simple Post</td>
-                        <td>Programming</td>
-                        <td>
-                            <a href="post-edit.html" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</a>
-                            <a href="post-delete.html" class="btn btn-danger"><i class="fa fa-trash-o"></i>Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>201</td>
-                        <td>This Is A Simple Post</td>
-                        <td>Programming</td>
-                        <td>
-                            <a href="post-edit.html" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</a>
-                            <a href="post-delete.html" class="btn btn-danger"><i class="fa fa-trash-o"></i>Delete</a>
-                        </td>
-                    </tr>
                     </tbody>
                 </table>
             </div>

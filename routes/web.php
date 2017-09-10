@@ -45,10 +45,11 @@ Route::group(['prefix' => '/advance', 'middleware' => 'auth'], function () {
 
     //Post
     Route::group(['prefix' => 'post'], function () {
-        Route::get('/new', 'PostController@create')->name('post.new');
-        Route::get('/trash', 'PostController@new')->name('post.deleted');
-        Route::get('/scheduled', 'PostController@new')->name('post.scheduled');
-        Route::get('/published', 'PostController@new')->name('post.published');
+        Route::get('/new', 'PostController@newPost')->name('post.new');
+        Route::post('/new', 'PostController@create')->name('post.create');
+//        Route::get('/trash', 'PostController@new')->name('post.deleted');
+//        Route::get('/scheduled', 'PostController@new')->name('post.scheduled');
+        Route::get('/{type}', 'PostController@index')->name('post.view');
     });
     //Post
 

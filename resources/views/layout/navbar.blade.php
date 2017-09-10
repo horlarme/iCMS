@@ -44,15 +44,15 @@
                             <i class="fi-clipboard-pencil"></i>New Post</a>
                     </li>
                     <li>
-                        <a href="{{ route('post.published')}}">
+                        <a href="{{ route('post.view', 'published')}}">
                             <i class="fi-clipboard"></i>Published</a>
                     </li>
                     <li>
-                        <a href="{{ route('post.deleted')}}">
+                        <a href="{{ route('post.view', 'deleted')}}">
                             <i class="fa fa-trash-o"></i>Deleted</a>
                     </li>
                     <li>
-                        <a href="{{ route('post.scheduled')}}">
+                        <a href="{{ route('post.view', 'scheduled')}}">
                             <i class="fi-clock"></i>Scheduled</a>
                     </li>
                 </ul>

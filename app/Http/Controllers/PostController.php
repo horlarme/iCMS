@@ -2,14 +2,107 @@
 
 namespace App\Http\Controllers;
 
+use App\Posts;
 use Illuminate\Http\Request;
-use \App\Category;
-use \App\Post;
 
 class PostController extends Controller
 {
-    public function create(Request $request){
+    protected $request;
+
+    public function index($type, Request $request){
+        return $type;
+    }
+
+    public function newPost(Request $request)
+    {
         $title = $request->get('title') ? $request->get('title') : "";
-    	return view('post.new', compact('title'));
+        return view('post.new', compact('title'));
+    }
+
+    public function create(Request $request)
+    {
+        //Storing the request values
+        $this->request = $request;
+        //Validate the post
+        $this->validatePost($this->request);
+
+        /**
+         * Processing the post from the user
+         */
+
+        $post = Posts::create([
+            'user_id' => auth()->user()->id,
+            'title' => $this->title(),
+            'content' => $this->content(),
+            'description' => $this->description(),
+            'image' => $this->image(),
+            'tags' => $this->tags(),
+            'category_id' => $this->category_id(),
+            'url' => $this->url(),
+        ]);
+        if ($post) {
+            session()->flash('message.content', 'Your post has been created successfully at <a href="' . $this->url() . '">' . $this->url() .'</a>');
+            session()->flash('message.type', 'text-success');
+            return response()->redirectToRoute('post.new');
+        } else {
+            session()->flash('message.content', 'There is an issue creating your post, please try again');
+            session()->flash('message.type', 'text-danger');
+            return response()
+                ->redirectToRoute('post.new');
+        }
+    }
+
+    public function validatePost(Request $request)
+    {
+        return $this->validate($request, [
+            'title' => 'required|min:10|max:60',
+            'description' => 'required|min:10|max:250'
+        ], [
+            'title.required' => 'The title field is required to create a new post!',
+            'title.min' => 'The title field needs minimum characters of 10!',
+            'title.max' => 'The title field needs not more than 60 characters!',
+            'description.required' => 'The description field is required to create a new post!',
+            'description.min' => 'The description field needs minimum of 10 characters to make a post!',
+            'description.max' => 'The description field takes only maximum characters of 60!',
+        ]);
+    }
+
+    /**
+     * Get the title of the current post
+     */
+    public function title()
+    {
+        return $this->request->get('title');
+    }
+
+    public function content()
+    {
+        $content = $this->request->get('content');
+        return str_replace(["<!DOCTYPE html>\r\n", "<html>\r\n", "\r\n</html>", "<head>\r\n", "</head>\r\n", "<body>\r\n", "</body>\r\n"], "", $content);
+    }
+
+    public function description()
+    {
+        return $this->request->get('description');
+    }
+
+    public function image()
+    {
+        return nullOrEmptyString($this->request->get('image')) ? '' : url($this->request->get('image'));
+    }
+
+    public function tags()
+    {
+        return nullOrEmptyString($this->request->get('tag')) ? 'iCMS' : $this->request->get('tag');
+    }
+
+    public function category_id()
+    {
+        return nullOrEmptyString($this->request->get('category')) ? '1' : $this->request->get('category');
+    }
+
+    public function url()
+    {
+        return strtolower(camel_case(url($this->title())));
     }
 }
