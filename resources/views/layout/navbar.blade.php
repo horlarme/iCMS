@@ -101,7 +101,7 @@
 
         <div class="row footer">
             <div class="footer">
-                &copy; {{date('Y')}}, {{strtoupper(setting('name', settingParent('name', 'app')))}}
+                &copy; {{date('Y')}}, {{strtoupper(setting('name', settingParent('app')))}}
             </div>
         </div>
     </div>

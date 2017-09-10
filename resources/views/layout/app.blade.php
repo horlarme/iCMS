@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="csrf_token" content="{{csrf_token()}}"/>
-    <title>{{setting('name', settingParent('name', 'app'))}} | @yield('title')</title>
+    <title>{{setting('name', settingParent('app'))}} | @yield('title')</title>
     <!-- BOOTSTRAP STYLES-->
     <link href="{{asset('css/bootstrap.css') }}" rel="stylesheet"/>
     <link href="{{asset('storage/favicon.png') }}" rel="icon"/>
@@ -20,9 +20,9 @@
     <!-- BOOTSTRAP SCRIPTS -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <meta name="description"
-          content="{{setting('description', settingParent('name', 'app'))}}"/>
+          content="{{setting('description', settingParent('app'))}}"/>
     <meta name="keywords"
-          content="{{setting('keywords', settingParent('name', 'app'))}}"/>
+          content="{{setting('keywords', settingParent('app'))}}"/>
 
     @yield('others')
 </head>

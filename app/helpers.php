@@ -9,9 +9,9 @@ if (!function_exists('setting')) {
 }
 
 if (!function_exists('settingParent')) {
-    function settingParent($name, $value)
+    function settingParent($value)
     {
-        return \App\Admin\SettingList::where($name, $value)->firstOrFail();
+        return \App\Admin\SettingList::where('name', $value)->firstOrFail();
     }
 }
 

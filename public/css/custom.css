@@ -85,7 +85,7 @@ h5, .h5 {
 }
 
 .sidebar-collapse .nav > li > a:hover {
-    background-color: transparent;
+    background-color: #737373;
 }
 
 div.row.footer {
@@ -355,4 +355,12 @@ label[for=user-image] {
 
 .loading > .closeButton:hover {
     color: white;
+}
+
+@media only screen and (max-width: 680px) {
+    .sidebar-collapse {
+        position: fixed;
+        width: 100%;
+        z-index: 9999;
+    }
 }
