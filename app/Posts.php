@@ -14,11 +14,11 @@ class Posts extends Model
     public function category()
     {
         // return $this->belongsTo('App\Category', 'id');
-        return $this->belongsTo('App\Admin\Category', 'id');
+        return $this->belongsTo('App\Category', 'id');
     }
 
     public function author()
     {
-        return $this->belongsTo('App\Admin\User', 'id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

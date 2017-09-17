@@ -35,8 +35,8 @@ Route::group(['prefix' => '/advance', 'middleware' => 'auth'], function () {
     //Pages
     Route::group(['prefix' => 'page'], function () {
         Route::get('', 'PagesController@index')->name('pages');
-        Route::get('/{name}', 'PagesController@view')->name('page.view');
         Route::get('/new', 'PagesController@create')->name('page.new');
+        Route::get('/deleted', 'PagesController@deleted')->name('page.deleted');
     });
     //Pages
 
@@ -47,6 +47,7 @@ Route::group(['prefix' => '/advance', 'middleware' => 'auth'], function () {
 //        Route::get('/trash', 'PostController@new')->name('post.deleted');
 //        Route::get('/scheduled', 'PostController@new')->name('post.scheduled');
         Route::get('/{type}', 'PostController@index')->name('post.view');
+        Route::get('/{id}/edit', 'PostController@edit')->name('post.edit');
     });
     //Post
 

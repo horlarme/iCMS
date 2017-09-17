@@ -9,20 +9,33 @@ class PostController extends Controller
 {
     protected $request;
 
-    public function index($type, Request $request){
-        return $type;
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
     }
 
-    public function newPost(Request $request)
+    public function index($type)
     {
+        $posts = Posts::with('author')->paginate(15);
+        return view('post.index', compact('posts'));
+    }
+
+    public function edit($id){
+        $post = Posts::where('id', $id)->first();
+        return view('post.edit', compact('post'));
+    }
+
+    public function newPost()
+    {
+        $request = $this->request;
         $title = $request->get('title') ? $request->get('title') : "";
         return view('post.new', compact('title'));
     }
 
-    public function create(Request $request)
+    public function create()
     {
         //Storing the request values
-        $this->request = $request;
+        $this->request = $this->request;
         //Validate the post
         $this->validatePost($this->request);
 
@@ -41,7 +54,7 @@ class PostController extends Controller
             'url' => $this->url(),
         ]);
         if ($post) {
-            session()->flash('message.content', 'Your post has been created successfully at <a href="' . $this->url() . '">' . $this->url() .'</a>');
+            session()->flash('message.content', 'Your post has been created successfully at <a href="' . $this->url() . '">' . $this->url() . '</a>');
             session()->flash('message.type', 'text-success');
             return response()->redirectToRoute('post.new');
         } else {
@@ -52,9 +65,9 @@ class PostController extends Controller
         }
     }
 
-    public function validatePost(Request $request)
+    public function validatePost()
     {
-        return $this->validate($request, [
+        return $this->validate($this->request, [
             'title' => 'required|min:10|max:60',
             'description' => 'required|min:10|max:250'
         ], [
@@ -78,7 +91,7 @@ class PostController extends Controller
     public function content()
     {
         $content = $this->request->get('content');
-        return str_replace(["<!DOCTYPE html>\r\n", "<html>\r\n", "\r\n</html>", "<head>\r\n", "</head>\r\n", "<body>\r\n", "</body>\r\n"], "", $content);
+        return str_replace(["<!DOCTYPE html>\r\n", "<html>\r\n", "\r\n</html>", "<head>\r\n", "</head>\r\n", "<body>\r\n", "</body>"], "", $content);
     }
 
     public function description()

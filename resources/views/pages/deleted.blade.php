@@ -1,11 +1,8 @@
 @extends('layout.app')
-@section('title') Pages List @stop
-@section('pageHeader') Pages List @stop
-@section('pageAction')
-    <a href="{{route('page.new')}}" class="btn btn-primary col-xs-12">Create New Page</a>
-@stop
+@section('title') Deleted Pages @stop
+@section('pageHeader') Deleted Pages  @stop
 @section('pageText')
-    The pages are what will be shown in / among the list of menu in the page for visitors.
+    The pages displayed here are deleted pages and will remained deleted until permanently deleted.
     @stop
 @section('content')
     <div class="row">

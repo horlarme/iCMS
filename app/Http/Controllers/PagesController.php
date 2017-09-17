@@ -7,14 +7,27 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
-    public function index(){
+    protected $request;
+
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+    }
+
+    public function index()
+    {
         $allPages = Pages::paginate('15');
         return view('pages.index', compact('allPages'));
     }
 
-
-    public function view($type, Request $request){
+    public function deleted()
+    {
         $allPages = Pages::onlyTrashed()->paginate('15');
-        return view('pages.index', compact('allPages'));
+        return view('pages.deleted', compact('allPages'));
     }
+
+    public function create(){
+        return "";
+    }
+
 }

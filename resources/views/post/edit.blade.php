@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title') Create New Post @stop
+@section('title') Edit Post @stop
 @section('others')
     <link rel='stylesheet' href="{{ asset('fancybox/dist/jquery.fancybox.min.css')}}">
     <!-- Tags Input -->
@@ -18,7 +18,7 @@
         {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/lfm.js')) !!}
     </script>
 @stop
-@section('pageHeader') Create A New Post Content @stop
+@section('pageHeader') {{ucwords($post->title)}} @stop
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -44,8 +44,10 @@
                         <div class="col-xs-9 nopadding">
                             <input type="text" id="blogtitle" name="title"
                                    class="blogtitle form-control"
-                                   placeholder="Enter post title" value="{{ old('title') }}"/>
-                            <p class="help-block suggestedURL clearfix"></p>
+                                   placeholder="Enter post title"
+                                   value="{{ !is_null(old('title')) ? old('title') : $post->title  }}"/>
+                            <p class="help-block suggestedURL clearfix"><a href="{{ $post->url }}">{{ $post->url }}</a>
+                            </p>
                         </div>
                     </div>
                     <!-- Post Description-->
@@ -56,14 +58,15 @@
                         <div class="col-xs-9 nopadding">
                             <textarea name="description" rows='6' maxlength="250" onkeyup="checkDescription()"
                                       class="form-control blogdescription"
-                                      placeholder="Describe your post in a few lines...">{{old('description')}}</textarea>
+                                      placeholder="Describe your post in a few lines...">{{ !is_null(old('description')) ? old('description') : $post->description }}</textarea>
                             <p class="help-block clearfix blogdescrip"></p>
                         </div>
                     </div>
                     <!--Form Input/Box-->
                     <!--Form Input/Box-->
                     <div class="col-xs-12 nopadding">
-                        <textarea class="editor" name="content"></textarea>
+                        <textarea class="editor"
+                                  name="content">{{ !is_null(old('content')) ? old('content') : $post->content  }}</textarea>
                     </div>
                     <script type="text/javascript">
                         //Configuration for the editor
@@ -106,9 +109,11 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">Blog Image</div>
                         <div class="panel-body">
-                            <img class="blogImageUpload img img-responsive thumbnail" src="{{old('image')}}"
+                            <img class="blogImageUpload img img-responsive thumbnail"
+                                 src="{{ !is_null(old('image')) ? old('image') : $post->image }}"
                                  id="blogImageUpload" style="margin-bottom: 15px;width: 100%;"/>
-                            <input id="thumbnail" type="hidden" name="image" value="{{old('image')}}">
+                            <input id="thumbnail" type="hidden" name="image"
+                                   value="{{ !is_null(old('image')) ? old('image') : $post->image}}">
                             <div class="form-group col-xs-offset-1 col-xs-5">
                                 <a data-preview="blogImageUpload" data-input="thumbnail"
                                    class="form-control uploadImage btn btn-primary">
@@ -145,6 +150,7 @@
                             <div class="form-group">
                                 <input type="text" name="tag" data-role="tagsinput"
                                        placeholder="Separate Tags with comma ','"
+                                       value="{{ !is_null(old('tag')) ? old('tag') : $post->tags  }}"
                                        class="blogTag form-control">
                             </div>
                             <style>
@@ -164,27 +170,21 @@
                     </div>
 
                     <div class="panel panel-primary">
-                        <div class="panel-heading">Publish</div>
+                        <div class="panel-heading">Update</div>
                         <div class="panel-body">
-                            <input type="checkbox" name="schedule" value="no" checked class="postnow"> Toggle this box
-                            to switch between posting and scheduling.
-                            <input type="submit" name="action" class="form-control btn btn-success publish"
-                                   value="Publish"/>
-                            <div class="schedulePost" style="display: none;">
-                                <p>Publish this post on the following information.</p>
-                                <label for="scheduleDate" class="col-xs-3">Date:</label>
-                                <input type="date" name="scheduleDate" class="col-xs-9"/>
-                                <div class="clearfix"></div>
-                                <label for="scheduleTime" class="col-xs-3">Time:</label>
-                                <input type="time" name="scheduleTime" class="col-xs-9"/>
-
-                                <input type="submit" class="col-xs-12 schedulePostButton btn btn-primary"
-                                       value="Schedule" name="action"/>
+                            <div class="col-xs-12">
+                                <input type="submit" name="action" class="form-control btn btn-success publish"
+                                       value="Update"/>
+                                <hr />
                             </div>
-                            <input type="submit" name="action" class="form-control btn-block col-xs-6"
-                                   value="Preview" style="color: blue;"/>
-                            <input type="submit" name="action" class="form-control col-xs-6 btn-block"
-                                   value="Draft" style="color: blue;"/>
+                            <div class="col-xs-6">
+                                <input type="submit" name="action" class="form-control btn-block btn btn-primary"
+                                       value="Preview"/>
+                            </div>
+                            <div class="col-xs-6">
+                                <input type="submit" name="action" class="form-control btn btn-danger btn-block"
+                                       value="Trash"/>
+                            </div>
                         </div>
                         <div class="clearfix"></div>
                     </div>

@@ -68,6 +68,15 @@ $('document').ready(function () {
 });
 
 /**
+ * Setting Up AJAX
+ */
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+/**
  * Deleting Category
  */
 $(document).on('click', '[data-cat-delete]', function (e) {
@@ -78,7 +87,6 @@ $(document).on('click', '[data-cat-delete]', function (e) {
         type: 'post',
         dataType: 'JSON',
         data: {
-            '_token': $('meta[name=csrf_token]').attr('content'),
             '_method': 'delete'
         },
         success: function (res) {
