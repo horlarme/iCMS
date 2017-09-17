@@ -48,6 +48,11 @@
 
 }(jQuery));
 
+
+/**
+ * iCMS Javascript Starts Here
+ * @author Lawal Oladipupo Olawunmi
+ */
 //All Page Scripts
 $('document').ready(function () {
     var h = $(window).innerHeight(),
@@ -63,14 +68,39 @@ $('document').ready(function () {
 });
 
 /**
- * Function hideLoading
+ * Deleting Category
+ */
+$(document).on('click', '[data-cat-delete]', function (e) {
+    e.preventDefault();
+    var element = $(this), name = element.data('cat-delete');
+    $.ajax({
+        url: name,
+        type: 'post',
+        dataType: 'JSON',
+        data: {
+            '_token': $('meta[name=csrf_token]').attr('content'),
+            '_method': 'delete'
+        },
+        success: function (res) {
+            element.parents('tr').remove();
+            showLoading(res.message);
+        },
+        error: function (res) {
+            showLoading(res.statusText, 'error');
+        }
+    })
+});
+
+/**
+ * @function hideLoading
  * Hide tbe loading bar by setting the top position of the element to -1000px
  */
 function hideLoading() {
     $('.loading').css({'top': '-1000px'});
 }
+
 /**
- * Function showLoading
+ * @function showLoading
  * Show the loading bar
  * @param $text The text to be shown in the bar
  */

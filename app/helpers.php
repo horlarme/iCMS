@@ -22,3 +22,10 @@ if (!function_exists('userRole')) {
         return $role->userRole($user_id);
     }
 }
+
+if(!function_exists('category')){
+    function category($name){
+        $c = new \App\Category();
+        return $c->category($name);
+    }
+}

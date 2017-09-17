@@ -8,6 +8,8 @@ class Category extends Model
 {
 	protected $table = 'categories';
 
+	protected $fillable = ['name', 'icon', 'title'];
+
     public function category($name){
     	return $this::where('name', $name)->first();
     }

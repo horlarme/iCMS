@@ -24,11 +24,11 @@ Route::group(['prefix' => '/advance', 'middleware' => 'auth'], function () {
     //Category
     Route::group(['prefix' => 'category'], function () {
         Route::get('', 'CategoryController@index')->name('categories');
-        Route::get('/{name}', 'CategoryController@view')->name('category.view');
-        Route::get('/new', 'CategoryController@new')->name('category.new');
-        Route::get('/deleted', 'CategoryController@deleted')->name('category.deleted');
-        Route::get('/{name}?action=edit', 'CategoryController@edit')->name('category.edit');
-        Route::get('/{name}?action=delete', 'CategoryController@edit')->name('category.delete');
+        Route::get('/new', 'CategoryController@create')->name('category.new');
+        Route::post('/new', 'CategoryController@process')->name('category.create');
+        Route::get('/{category}', 'CategoryController@edit')->name('category.edit');
+        Route::post('/{category}', 'CategoryController@update')->name('category.update');
+        Route::delete('/{category}', 'CategoryController@delete')->name('category.delete');
     });
     //Category
 

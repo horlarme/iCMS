@@ -24,7 +24,7 @@
         <div class="col-md-12">
             @if(session()->has('message'))
                 <h4 class="{{session()->get('message.type')}}">{{session()->get('message.content')}}</h4>
-                @endif
+            @endif
             @if($errors->any())
                 <ul class="alert alert-danger">
                     <h4>Please go through the following errors:</h4>
@@ -56,7 +56,7 @@
                         <div class="col-xs-9 nopadding">
                             <textarea name="description" rows='6' maxlength="250" onkeyup="checkDescription()"
                                       class="form-control blogdescription"
-                                      placeholder="Describe your post in a few lines..."></textarea>
+                                      placeholder="Describe your post in a few lines...">{{old('description')}}</textarea>
                             <p class="help-block clearfix blogdescrip"></p>
                         </div>
                     </div>
@@ -106,9 +106,9 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">Blog Image</div>
                         <div class="panel-body">
-                            <img class="blogImageUpload img img-responsive thumbnail" id="blogImageUpload"
-                                 style="margin-bottom: 15px;width: 100%;"/>
-                            <input id="thumbnail" type="hidden" name="image">
+                            <img class="blogImageUpload img img-responsive thumbnail" src="{{old('image')}}"
+                                 id="blogImageUpload" style="margin-bottom: 15px;width: 100%;"/>
+                            <input id="thumbnail" type="hidden" name="image" value="{{old('image')}}">
                             <div class="form-group col-xs-offset-1 col-xs-5">
                                 <a data-preview="blogImageUpload" data-input="thumbnail"
                                    class="form-control uploadImage btn btn-primary">

@@ -357,7 +357,7 @@ label[for=user-image] {
     color: white;
 }
 
-@media only screen and (max-width: 680px) {
+@media only screen and (max-width: 689px) {
     .sidebar-collapse {
         position: fixed;
         width: 100%;

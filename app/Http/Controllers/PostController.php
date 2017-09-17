@@ -88,17 +88,17 @@ class PostController extends Controller
 
     public function image()
     {
-        return nullOrEmptyString($this->request->get('image')) ? '' : url($this->request->get('image'));
+        return is_null($this->request->get('image')) ? '' : url($this->request->get('image'));
     }
 
     public function tags()
     {
-        return nullOrEmptyString($this->request->get('tag')) ? 'iCMS' : $this->request->get('tag');
+        return is_null($this->request->get('tag')) ? 'iCMS' : $this->request->get('tag');
     }
 
     public function category_id()
     {
-        return nullOrEmptyString($this->request->get('category')) ? '1' : $this->request->get('category');
+        return is_null($this->request->get('category')) ? '1' : $this->request->get('category');
     }
 
     public function url()

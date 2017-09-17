@@ -26,11 +26,6 @@
                             <i class="fi fi-clipboard-pencil"></i>New
                         </a>
                     </li>
-                    <li>
-                        <a href="{{route('category.deleted')}}">
-                            <i class="fa fa-trash-o"></i>Deleted
-                        </a>
-                    </li>
                 </ul>
             </li>
             <!--Categories-->
