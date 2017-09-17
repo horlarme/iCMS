@@ -67,7 +67,7 @@
                             <i class="fi-clipboard-pencil"></i>New Page</a>
                     </li>
                     <li>
-                        <a href="{{ route('page.deleted')}}">
+                        <a href="{{ route('page.view', 'deleted')}}">
                             <i class="fa fa-trash-o"></i>Deleted</a>
                     </li>
                 </ul>

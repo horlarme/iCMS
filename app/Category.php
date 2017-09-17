@@ -25,7 +25,7 @@ class Category extends Model
     /**
     * The author of the post
     */
-    public function postAuthor(){
+    public function author(){
     	return $this->hasOne('App\User', 'id');
     }
 }
