@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Posts extends Model
 {
+
+    use SoftDeletes;
 
     protected $table = 'post';
 
@@ -13,7 +16,6 @@ class Posts extends Model
 
     public function category()
     {
-        // return $this->belongsTo('App\Category', 'id');
         return $this->belongsTo('App\Category', 'id');
     }
 

@@ -166,26 +166,26 @@
                     <div class="panel panel-primary">
                         <div class="panel-heading">Publish</div>
                         <div class="panel-body">
-                            <input type="checkbox" name="schedule" value="no" checked class="postnow"> Toggle this box
-                            to switch between posting and scheduling.
+                            {{--<input type="checkbox" name="schedule" value="no" checked class="postnow"> Toggle this box--}}
+                            {{--to switch between posting and scheduling.--}}
                             <input type="submit" name="action" class="form-control btn btn-success publish"
                                    value="Publish"/>
-                            <div class="schedulePost" style="display: none;">
-                                <p>Publish this post on the following information.</p>
-                                <label for="scheduleDate" class="col-xs-3">Date:</label>
-                                <input type="date" name="scheduleDate" class="col-xs-9"/>
-                                <div class="clearfix"></div>
-                                <label for="scheduleTime" class="col-xs-3">Time:</label>
-                                <input type="time" name="scheduleTime" class="col-xs-9"/>
+                            {{--<div class="schedulePost" style="display: none;">--}}
+                                {{--<p>Publish this post on the following information.</p>--}}
+                                {{--<label for="scheduleDate" class="col-xs-3">Date:</label>--}}
+                                {{--<input type="date" name="scheduleDate" class="col-xs-9"/>--}}
+                                {{--<div class="clearfix"></div>--}}
+                                {{--<label for="scheduleTime" class="col-xs-3">Time:</label>--}}
+                                {{--<input type="time" name="scheduleTime" class="col-xs-9"/>--}}
 
-                                <input type="submit" class="col-xs-12 schedulePostButton btn btn-primary"
-                                       value="Schedule" name="action"/>
-                            </div>
-                            <input type="submit" name="action" class="form-control btn-block col-xs-6"
-                                   value="Preview" style="color: blue;"/>
-                            <input type="submit" name="action" class="form-control col-xs-6 btn-block"
-                                   value="Draft" style="color: blue;"/>
-                        </div>
+                                {{--<input type="submit" class="col-xs-12 schedulePostButton btn btn-primary"--}}
+                                       {{--value="Schedule" name="action"/>--}}
+                            {{--</div>--}}
+                            {{--<input type="submit" name="action" class="form-control btn-block col-xs-6"--}}
+                                   {{--value="Preview" style="color: blue;"/>--}}
+                            {{--<input type="submit" name="action" class="form-control col-xs-6 btn-block"--}}
+                                   {{--value="Draft" style="color: blue;"/>--}}
+                        {{--</div>--}}
                         <div class="clearfix"></div>
                     </div>
 

@@ -79,9 +79,9 @@ $.ajaxSetup({
 /**
  * Deleting Category
  */
-$(document).on('click', '[data-cat-delete]', function (e) {
+$(document).on('click', '[data-delete]', function (e) {
     e.preventDefault();
-    var element = $(this), name = element.data('cat-delete');
+    var element = $(this), name = element.data('delete');
     $.ajax({
         url: name,
         type: 'post',

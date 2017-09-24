@@ -14,7 +14,64 @@ class PostController extends Controller
         $this->request = $request;
     }
 
-    public function index($type)
+    public function deleted(){
+        $posts = Posts::onlyTrashed()
+        ->with('author')
+        ->paginate(15);
+        return view('post.deleted', compact('posts'));
+    }
+
+    public function delete($postID){
+        $delete = Posts::where('id', $postID)->delete();
+
+        if($delete){
+            if ($this->request->ajax()) {
+                return json_encode([
+                    'response' => 'true',
+                    'message' => "Post deleted successfully."
+                ]);
+            }
+            //Normal Request
+            return response()
+                ->redirectToRoute('post')
+                ->with([
+                    'message.type' => 'text-success',
+                    'message.content' => 'Post deleted successfully.'
+                ]);
+        }
+    }
+
+    public function deleteDeleted($postID){
+        $delete = Posts::where('id', $postID)->forceDelete();
+
+        if($delete){
+            if ($this->request->ajax()) {
+                return json_encode([
+                    'response' => 'true',
+                    'message' => "Post permanently deleted."
+                ]);
+            }
+            //Normal Request
+            return response()
+                ->redirectToRoute('post')
+                ->with([
+                    'message.type' => 'text-success',
+                    'message.content' => 'Post permanently deleted.'
+                ]);
+        }
+    }
+
+    public function restore($postID){
+        Posts::where('id', $postID)->restore();
+        return redirect()
+            ->route('post.deleted')
+            ->with([
+                'message.type' => 'text-success',
+                'message.content' => 'Post has been successfully restored'
+            ]);
+    }
+
+    public function index()
     {
         $posts = Posts::with('author')->paginate(15);
         return view('post.index', compact('posts'));

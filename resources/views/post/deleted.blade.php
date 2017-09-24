@@ -1,14 +1,18 @@
 @extends('layout.app')
-@section('title') All Published Posts @stop
-@section('pageHeader') All Published Posts @stop
+@section('title') Deleted Posts @stop
+@section('pageHeader') All Deleted Posts @stop
 @section('pageAction')
     <a href="{{route('post.new')}}" class="btn btn-primary col-xs-12"><i class="fa fa-edit"></i> Create New Post</a>
 @stop
 @section('pageText')
+    <span class="text-danger">All post displayed here are deleted and are temporary, when deleted from here again they become permanently deleted</span>
 @stop
 @section('content')
     <div class="row">
         <div class="col-md-12">
+            @if(session()->has('message'))
+                <h4 class="{{session()->get('message.type')}}">{{session()->get('message.content')}}</h4>
+            @endif
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover">
                     <thead class="thead-inverse">
@@ -37,10 +41,10 @@
                             </td>
                             <td>{{ substr($post->description, 0, 120) }}</td>
                             <td>
-                                <a href="{{route('post.edit', $post->id)}}" class="btn btn-primary"><i
-                                            class="fa fa-edit"></i>Edit</a>
-                                <a href="" data-delete="{{route('post.delete', $post->id)}}" class="btn btn-danger"><i
-                                            class="fa fa-trash-o"></i>Delete</a>
+                                <a href="{{route('post.restore', $post->id)}}" class="btn btn-primary"><i
+                                            class="fa fa-archive"></i>Restore</a>
+                                <a href="" data-delete="{{route('post.deleteDeleted', $post->id)}}" class="btn btn-danger"><i
+                                            class="fa fa-trash-o"></i>Permanently Delete</a>
                             </td>
                         </tr>
                     @endforeach

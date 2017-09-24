@@ -33,7 +33,7 @@
                                    class="btn btn-primary pull-left"><i
                                             class="fa fa-edit"></i></a>
                                 <a href="" class="btn btn-danger" title="Delete"
-                                   data-cat-delete="{{route('category.delete', $category->name)}}"><i
+                                   data-delete="{{route('category.delete', $category->name)}}"><i
                                             class="fa fa-trash-o"></i></a>
                             </td>
                         </tr>
