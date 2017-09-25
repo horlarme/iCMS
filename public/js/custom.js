@@ -145,7 +145,7 @@ function showLoading($text = "Loading...", status = "loading") {
 
 
     /**
-     * The loading bar cloaes after 3 seconds
+     * The loading bar closes after 3 seconds
      */
     setTimeout(function () {
             hideLoading()

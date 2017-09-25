@@ -48,6 +48,7 @@ Route::group(['prefix' => '/advance', 'middleware' => 'auth'], function () {
         Route::get('/published', 'PostController@index')->name('post.view');
         Route::get('/{id}/edit', 'PostController@edit')->name('post.edit');
 
+        Route::post('/{id}/edit', 'PostController@update')->name('post.update');
         Route::delete('/{id}', 'PostController@delete')->name('post.delete');
         Route::get('/{id}', 'PostController@restore')->name('post.restore');
         Route::delete('/delete/{id}', 'PostController@deleteDeleted')->name('post.deleteDeleted');

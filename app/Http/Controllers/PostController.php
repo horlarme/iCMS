@@ -14,17 +14,19 @@ class PostController extends Controller
         $this->request = $request;
     }
 
-    public function deleted(){
+    public function deleted()
+    {
         $posts = Posts::onlyTrashed()
-        ->with('author')
-        ->paginate(15);
+            ->with('author')
+            ->paginate(15);
         return view('post.deleted', compact('posts'));
     }
 
-    public function delete($postID){
+    public function delete($postID)
+    {
         $delete = Posts::where('id', $postID)->delete();
 
-        if($delete){
+        if ($delete) {
             if ($this->request->ajax()) {
                 return json_encode([
                     'response' => 'true',
@@ -41,10 +43,11 @@ class PostController extends Controller
         }
     }
 
-    public function deleteDeleted($postID){
+    public function deleteDeleted($postID)
+    {
         $delete = Posts::where('id', $postID)->forceDelete();
 
-        if($delete){
+        if ($delete) {
             if ($this->request->ajax()) {
                 return json_encode([
                     'response' => 'true',
@@ -61,7 +64,8 @@ class PostController extends Controller
         }
     }
 
-    public function restore($postID){
+    public function restore($postID)
+    {
         Posts::where('id', $postID)->restore();
         return redirect()
             ->route('post.deleted')
@@ -71,36 +75,17 @@ class PostController extends Controller
             ]);
     }
 
-    public function index()
-    {
-        $posts = Posts::with('author')->paginate(15);
-        return view('post.index', compact('posts'));
-    }
 
-    public function edit($id){
-        $post = Posts::where('id', $id)->first();
-        return view('post.edit', compact('post'));
-    }
-
-    public function newPost()
+    public function update($postID)
     {
-        $request = $this->request;
-        $title = $request->get('title') ? $request->get('title') : "";
-        return view('post.new', compact('title'));
-    }
-
-    public function create()
-    {
-        //Storing the request values
-        $this->request = $this->request;
-        //Validate the post
-        $this->validatePost($this->request);
+        $this->validatePost($postID);
 
         /**
          * Processing the post from the user
          */
 
-        $post = Posts::create([
+        $post = Posts::where('id', $postID)->first();
+        $post->update([
             'user_id' => auth()->user()->id,
             'title' => $this->title(),
             'content' => $this->content(),
@@ -110,22 +95,29 @@ class PostController extends Controller
             'category_id' => $this->category_id(),
             'url' => $this->url(),
         ]);
+
         if ($post) {
-            session()->flash('message.content', 'Your post has been created successfully at <a href="' . $this->url() . '">' . $this->url() . '</a>');
+            session()->flash('message.content', 'Post updated');
             session()->flash('message.type', 'text-success');
-            return response()->redirectToRoute('post.new');
+            return response()->redirectToRoute('post.edit', $postID);
         } else {
             session()->flash('message.content', 'There is an issue creating your post, please try again');
             session()->flash('message.type', 'text-danger');
             return response()
-                ->redirectToRoute('post.new');
+                ->redirectToRoute('post.edit', $postID);
         }
     }
 
-    public function validatePost()
+    public function validatePost($unique = '')
     {
+        if ($unique != '' || null) {
+            $unique = ',' . $unique;
+        } else {
+            $unique = '';
+        }
+
         return $this->validate($this->request, [
-            'title' => 'required|min:10|max:60',
+            'title' => 'required|min:10|max:60|unique:post,title' . $unique,
             'description' => 'required|min:10|max:250'
         ], [
             'title.required' => 'The title field is required to create a new post!',
@@ -174,5 +166,58 @@ class PostController extends Controller
     public function url()
     {
         return strtolower(camel_case(url($this->title())));
+    }
+
+    public function index()
+    {
+        $posts = Posts::with('author')->paginate(15);
+        return view('post.index', compact('posts'));
+    }
+
+    public function edit($id)
+    {
+        $post = Posts::where('id', $id)->first();
+        return view('post.edit', compact('post'));
+    }
+
+    public function newPost()
+    {
+        $request = $this->request;
+        $title = $request->get('title') ? $request->get('title') : "";
+        return view('post.new', compact('title'));
+    }
+
+    public function create()
+    {
+        //Storing the request values
+        $this->request = $this->request;
+        //Validate the post
+        $this->validatePost();
+
+        /**
+         * Processing the post from the user
+         */
+
+        $post = Posts::create([
+            'user_id' => auth()->user()->id,
+            'title' => $this->title(),
+            'content' => $this->content(),
+            'description' => $this->description(),
+            'image' => $this->image(),
+            'tags' => $this->tags(),
+            'category_id' => $this->category_id(),
+            'url' => $this->url(),
+        ]);
+
+        if ($post) {
+            session()->flash('message.content', 'Your post has been created successfully at <a href="' . $this->url() . '">' . $this->url() . '</a>');
+            session()->flash('message.type', 'text-success');
+            return response()->redirectToRoute('post.new');
+        } else {
+            session()->flash('message.content', 'There is an issue creating your post, please try again');
+            session()->flash('message.type', 'text-danger');
+            return response()
+                ->redirectToRoute('post.new');
+        }
     }
 }

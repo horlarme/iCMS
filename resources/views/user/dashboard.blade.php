@@ -39,8 +39,8 @@
                         <td>This Is A Simple Post</td>
                         <td>Programming</td>
                         <td>
-                            <a href="post-edit.html" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</a>
-                            <a href="post-delete.html" class="btn btn-danger"><i class="fa fa-trash-o"></i>Delete</a>
+                            <a href="post-edit.html" class="btn btn-primary" title="Edit"><i class="fa fa-edit"></i></a>
+                            <a href="post-delete.html" class="btn btn-danger" title="Delete"><i class="fa fa-trash-o"></i></a>
                         </td>
                     </tr>
                     </tbody>
@@ -62,63 +62,13 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td>Tue 11 Mar, 2017</td>
+                        <td>Tue 11 Mar, 2017 <small>11:00am</small></td>
                         <td>This Is A Simple Post</td>
                         <td>Programming</td>
                         <td>
-                            <a href="post-edit.html" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</a>
-                            <a href="post-delete.html" class="btn btn-danger"><i
-                                        class="fa fa-trash-o"></i>Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Tue 11 Mar, 2017</td>
-                        <td>This Is A Simple Post</td>
-                        <td>Programming</td>
-                        <td>
-                            <a href="post-edit.html" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</a>
-                            <a href="post-delete.html" class="btn btn-danger"><i
-                                        class="fa fa-trash-o"></i>Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Tue 11 Mar, 2017</td>
-                        <td>This Is A Simple Post</td>
-                        <td>Programming</td>
-                        <td>
-                            <a href="post-edit.html" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</a>
-                            <a href="post-delete.html" class="btn btn-danger"><i
-                                        class="fa fa-trash-o"></i>Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Tue 11 Mar, 2017</td>
-                        <td>This Is A Simple Post</td>
-                        <td>Programming</td>
-                        <td>
-                            <a href="post-edit.html" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</a>
-                            <a href="post-delete.html" class="btn btn-danger"><i
-                                        class="fa fa-trash-o"></i>Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Tue 11 Mar, 2017</td>
-                        <td>This Is A Simple Post</td>
-                        <td>Programming</td>
-                        <td>
-                            <a href="post-edit.html" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</a>
-                            <a href="post-delete.html" class="btn btn-danger"><i
-                                        class="fa fa-trash-o"></i>Delete</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Tue 11 Mar, 2017</td>
-                        <td>This Is A Simple Post</td>
-                        <td>Programming</td>
-                        <td>
-                            <a href="post-edit.html" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</a>
-                            <a href="post-delete.html" class="btn btn-danger"><i
-                                        class="fa fa-trash-o"></i>Delete</a>
+                            <a href="post-edit.html" class="btn btn-primary" title="Edit"><i class="fa fa-edit"></i></a>
+                            <a href="post-edit.html" class="btn btn-primary" title="Publish Now"><i class="fa fa-share"></i></a>
+                            <a href="post-delete.html" class="btn btn-danger" title="Move to trash"><i class="fa fa-trash-o"></i></a>
                         </td>
                     </tr>
                     </tbody>

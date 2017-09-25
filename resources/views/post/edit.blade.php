@@ -33,7 +33,8 @@
                     @endforeach
                 </ul>
             @endif
-            <form action="{{route('post.create')}}" class="new-post" method="post" enctype="multipart/form-data">
+            <form action="{{route('post.update', $post->id)}}" class="new-post" method="post"
+                  enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="col-xs-12 col-md-8 form-group form-horizontal">
                     <!-- Post Title-->
@@ -136,7 +137,8 @@
                         <div class="panel-body <?php echo ($errors->has('title')) ? 'has-error' : ""?>">
                             @php($categories = \App\Category::all())
                             @foreach($categories as $c)
-                                <input type="radio" name="category" value="{{ $c['id'] }}"/> {{ strtoupper($c['name'])}}
+                                <input type="radio" name="category"
+                                       {{ ($post->category_id === $c['id']) ? 'checked' : '' }} value="{{ $c['id'] }}"/> {{ strtoupper($c['name'])}}
                                 <br/>
                             @endforeach
                             <p class="help-block text-warning">If none is selected, then UNDEFINED will be used
@@ -175,7 +177,7 @@
                             <div class="col-xs-12">
                                 <input type="submit" name="action" class="form-control btn btn-success publish"
                                        value="Update"/>
-                                <hr />
+                                <hr/>
                             </div>
                             <div class="col-xs-6">
                                 <input type="submit" name="action" class="form-control btn-block btn btn-primary"
