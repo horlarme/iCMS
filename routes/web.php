@@ -35,8 +35,15 @@ Route::group(['prefix' => '/advance', 'middleware' => 'auth'], function () {
     //Pages
     Route::group(['prefix' => 'page'], function () {
         Route::get('', 'PagesController@index')->name('pages');
-        Route::get('/new', 'PagesController@create')->name('page.new');
+        Route::get('/new', 'PagesController@newPage')->name('page.new');
+        Route::post('/new', 'PagesController@create')->name('page.create');
         Route::get('/deleted', 'PagesController@deleted')->name('page.deleted');
+        Route::get('/{id}/edit', 'PagesController@edit')->name('page.edit');
+
+        Route::post('/{id}/edit', 'PagesController@update')->name('page.update');
+        Route::delete('/{id}', 'PagesController@delete')->name('page.delete');
+        Route::get('/{id}', 'PagesController@restore')->name('page.restore');
+        Route::delete('/delete/{id}', 'PagesController@deleteDeleted')->name('page.deleteDeleted');
     });
     //Pages
 

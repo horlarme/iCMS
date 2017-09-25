@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title') Create New Post @stop
+@section('title') Create New Page @stop
 @section('others')
     <link rel='stylesheet' href="{{ asset('fancybox/dist/jquery.fancybox.min.css')}}">
     <!-- Tags Input -->
@@ -18,7 +18,7 @@
         {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/lfm.js')) !!}
     </script>
 @stop
-@section('pageHeader') Create A New Post Content @stop
+@section('pageHeader') {{ucwords($page->title)}} @stop
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -33,7 +33,7 @@
                     @endforeach
                 </ul>
             @endif
-            <form action="{{route('post.create')}}" class="new-post" method="post" enctype="multipart/form-data">
+            <form action="{{route('page.update', $page->id)}}" class="new-post" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="col-xs-12 col-md-8 form-group form-horizontal">
                     <!-- Post Title-->
@@ -44,7 +44,8 @@
                         <div class="col-xs-9 nopadding">
                             <input type="text" id="blogtitle" name="title"
                                    class="blogtitle form-control"
-                                   placeholder="Enter post title" value="{{ old('title') }}"/>
+                                   placeholder="Enter post title"
+                                   value="{{ !is_null(old('title')) ? old('title') : $page->title }}"/>
                             <p class="help-block suggestedURL clearfix"></p>
                         </div>
                     </div>
@@ -56,14 +57,14 @@
                         <div class="col-xs-9 nopadding">
                             <textarea name="description" rows='6' maxlength="250" onkeyup="checkDescription()"
                                       class="form-control blogdescription"
-                                      placeholder="Describe your post in a few lines...">{{old('description')}}</textarea>
+                                      placeholder="Describe your post in a few lines...">{{ !is_null(old('description')) ? old('description') : $page->description}}</textarea>
                             <p class="help-block clearfix blogdescrip"></p>
                         </div>
                     </div>
                     <!--Form Input/Box-->
                     <!--Form Input/Box-->
                     <div class="col-xs-12 nopadding">
-                        <textarea class="editor" name="content">{{old('content')}}</textarea>
+                        <textarea class="editor" name="content">{{ !is_null(old('content')) ? old('content') : $page->content}}</textarea>
                     </div>
                     <script type="text/javascript">
                         //Configuration for the editor
@@ -104,94 +105,29 @@
                 <!--The Left Panel Option-->
                 <div class="col-xs-12 col-md-4">
                     <div class="panel panel-primary">
-                        <div class="panel-heading">Blog Image</div>
+                        <div class="panel-heading">Update</div>
                         <div class="panel-body">
-                            <img class="blogImageUpload img img-responsive thumbnail" src="{{old('image')}}"
-                                 id="blogImageUpload" style="margin-bottom: 15px;width: 100%;"/>
-                            <input id="thumbnail" type="hidden" name="image" value="{{old('image')}}">
-                            <div class="form-group col-xs-offset-1 col-xs-5">
-                                <a data-preview="blogImageUpload" data-input="thumbnail"
-                                   class="form-control uploadImage btn btn-primary">
-                                    <i class="fa fa-picture-o"></i> Choose
-                                </a>
+                            <div class="panel-body">
+                                <div class="col-xs-12">
+                                    <input type="submit" name="action" class="form-control btn btn-success publish"
+                                           value="Update"/>
+                                    <hr/>
+                                </div>
+                                <div class="col-xs-6">
+                                    <input type="submit" name="action" class="form-control btn-block btn btn-primary"
+                                           value="Preview"/>
+                                </div>
+                                <div class="col-xs-6">
+                                    <input type="submit" name="action" class="form-control btn btn-danger btn-block"
+                                           value="Trash"/>
+                                </div>
                             </div>
-                            <div class="form-group col-xs-5">
-                                <a class="form-control removeUploadImage btn btn-danger">
-                                    <i class="fa fa-ban"></i> Remove
-                                </a>
-                            </div>
-                            <script>
-                                $('.uploadImage').filemanager('image', {prefix: '{{ url(config('lfm.prefix')) }}'});
-                            </script>
+                            <div class="clearfix"></div>
                         </div>
+
                     </div>
 
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">Category</div>
-                        <div class="panel-body <?php echo ($errors->has('title')) ? 'has-error' : ""?>">
-                            @php($categories = \App\Category::all())
-                            @foreach($categories as $c)
-                                <input type="radio" name="category" value="{{ $c['id'] }}"/> {{ strtoupper($c['name'])}}
-                                <br/>
-                            @endforeach
-                            <p class="help-block text-warning">If none is selected, then UNDEFINED will be used
-                                instead.</p>
-                        </div>
-                    </div>
-
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">Tags</div>
-                        <div class="panel-body">
-                            <div class="form-group">
-                                <input type="text" name="tag" data-role="tagsinput"
-                                       placeholder="Separate Tags with comma ','"
-                                       class="blogTag form-control">
-                            </div>
-                            <style>
-                                .bootstrap-tagsinput {
-                                    width: 100%;
-                                }
-                            </style>
-                            <script>
-                                $(document).ready(function () {
-                                    $('.bootstrap-tagsinput input').addClass('form-control');
-                                })
-                            </script>
-                        </div>
-                        <div class="panel-footer">
-                            Don't leave spaces after each comma and don't leave a comma as the last character...
-                        </div>
-                    </div>
-
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">Publish</div>
-                        <div class="panel-body">
-                            {{--<input type="checkbox" name="schedule" value="no" checked class="postnow"> Toggle this box--}}
-                            {{--to switch between posting and scheduling.--}}
-                            <input type="submit" name="action" class="form-control btn btn-success publish"
-                                   value="Publish"/>
-                            {{--<div class="schedulePost" style="display: none;">--}}
-                                {{--<p>Publish this post on the following information.</p>--}}
-                                {{--<label for="scheduleDate" class="col-xs-3">Date:</label>--}}
-                                {{--<input type="date" name="scheduleDate" class="col-xs-9"/>--}}
-                                {{--<div class="clearfix"></div>--}}
-                                {{--<label for="scheduleTime" class="col-xs-3">Time:</label>--}}
-                                {{--<input type="time" name="scheduleTime" class="col-xs-9"/>--}}
-
-                                {{--<input type="submit" class="col-xs-12 schedulePostButton btn btn-primary"--}}
-                                       {{--value="Schedule" name="action"/>--}}
-                            {{--</div>--}}
-                            {{--<input type="submit" name="action" class="form-control btn-block col-xs-6"--}}
-                                   {{--value="Preview" style="color: blue;"/>--}}
-                            {{--<input type="submit" name="action" class="form-control col-xs-6 btn-block"--}}
-                                   {{--value="Draft" style="color: blue;"/>--}}
-                        {{--</div>--}}
-                        <div class="clearfix"></div>
-                    </div>
-
-                </div>
-
-                <div class="clearfix"></div>
+                    <div class="clearfix"></div>
             </form>
         </div>
     </div>

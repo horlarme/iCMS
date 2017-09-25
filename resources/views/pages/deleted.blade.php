@@ -2,7 +2,7 @@
 @section('title') Deleted Pages @stop
 @section('pageHeader') Deleted Pages  @stop
 @section('pageText')
-    The pages displayed here are deleted pages and will remained deleted until permanently deleted.
+    <span class="text-danger">The pages displayed here are deleted pages and will remained deleted until permanently deleted.</span>
     @stop
 @section('content')
     <div class="row">
@@ -37,10 +37,10 @@
                             </td>
                             <td>{{ substr($page->description, 0, 120) }}</td>
                             <td>
-                                <a href="{{route('category.edit', $page->name)}}" class="btn btn-primary"><i
-                                            class="fa fa-edit"></i>Edit</a>
-                                <a href="{{route('category.delete', $page->name)}}" class="btn btn-danger"><i
-                                            class="fa fa-trash-o"></i>Delete</a>
+                                <a href="{{route('page.restore', $page->id)}}" class="btn btn-info"><i
+                                            class="fa fa-archive"></i>Restore</a>
+                                <a href="" data-delete="{{route('page.deleteDeleted', $page->id)}}" class="btn btn-danger"><i
+                                            class="fa fa-trash-o"></i>Permanently Delete</a>
                             </td>
                         </tr>
                     @endforeach

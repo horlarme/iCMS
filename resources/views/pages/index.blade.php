@@ -40,9 +40,9 @@
                             </td>
                             <td>{{ substr($page->description, 0, 120) }}</td>
                             <td>
-                                <a href="{{route('category.edit', $page->name)}}" class="btn btn-primary"><i
+                                <a href="{{route('page.edit', $page->id)}}" class="btn btn-primary"><i
                                             class="fa fa-edit"></i>Edit</a>
-                                <a href="{{route('category.delete', $page->name)}}" class="btn btn-danger"><i
+                                <a href="" data-delete="{{route('page.delete', $page->id)}}" class="btn btn-danger"><i
                                             class="fa fa-trash-o"></i>Delete</a>
                             </td>
                         </tr>

@@ -13,6 +13,8 @@ class Pages extends Model
 
     protected $dates = ['deleted_at'];
 
+    protected $fillable = ['author', 'title', 'description', 'content'];
+
     public function user()
     {
         return $this->belongsTo(User::class, 'author', 'id');

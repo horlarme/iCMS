@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title') Create New Post @stop
+@section('title') Create New Page @stop
 @section('others')
     <link rel='stylesheet' href="{{ asset('fancybox/dist/jquery.fancybox.min.css')}}">
     <!-- Tags Input -->
@@ -18,7 +18,7 @@
         {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/lfm.js')) !!}
     </script>
 @stop
-@section('pageHeader') Create A New Post Content @stop
+@section('pageHeader') Create A New Page @stop
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -33,7 +33,7 @@
                     @endforeach
                 </ul>
             @endif
-            <form action="{{route('post.create')}}" class="new-post" method="post" enctype="multipart/form-data">
+            <form action="{{route('page.create')}}" class="new-post" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="col-xs-12 col-md-8 form-group form-horizontal">
                     <!-- Post Title-->
@@ -103,66 +103,6 @@
                 </div>
                 <!--The Left Panel Option-->
                 <div class="col-xs-12 col-md-4">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">Blog Image</div>
-                        <div class="panel-body">
-                            <img class="blogImageUpload img img-responsive thumbnail" src="{{old('image')}}"
-                                 id="blogImageUpload" style="margin-bottom: 15px;width: 100%;"/>
-                            <input id="thumbnail" type="hidden" name="image" value="{{old('image')}}">
-                            <div class="form-group col-xs-offset-1 col-xs-5">
-                                <a data-preview="blogImageUpload" data-input="thumbnail"
-                                   class="form-control uploadImage btn btn-primary">
-                                    <i class="fa fa-picture-o"></i> Choose
-                                </a>
-                            </div>
-                            <div class="form-group col-xs-5">
-                                <a class="form-control removeUploadImage btn btn-danger">
-                                    <i class="fa fa-ban"></i> Remove
-                                </a>
-                            </div>
-                            <script>
-                                $('.uploadImage').filemanager('image', {prefix: '{{ url(config('lfm.prefix')) }}'});
-                            </script>
-                        </div>
-                    </div>
-
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">Category</div>
-                        <div class="panel-body <?php echo ($errors->has('title')) ? 'has-error' : ""?>">
-                            @php($categories = \App\Category::all())
-                            @foreach($categories as $c)
-                                <input type="radio" name="category" value="{{ $c['id'] }}"/> {{ strtoupper($c['name'])}}
-                                <br/>
-                            @endforeach
-                            <p class="help-block text-warning">If none is selected, then UNDEFINED will be used
-                                instead.</p>
-                        </div>
-                    </div>
-
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">Tags</div>
-                        <div class="panel-body">
-                            <div class="form-group">
-                                <input type="text" name="tag" data-role="tagsinput"
-                                       placeholder="Separate Tags with comma ','"
-                                       class="blogTag form-control">
-                            </div>
-                            <style>
-                                .bootstrap-tagsinput {
-                                    width: 100%;
-                                }
-                            </style>
-                            <script>
-                                $(document).ready(function () {
-                                    $('.bootstrap-tagsinput input').addClass('form-control');
-                                })
-                            </script>
-                        </div>
-                        <div class="panel-footer">
-                            Don't leave spaces after each comma and don't leave a comma as the last character...
-                        </div>
-                    </div>
-
                     <div class="panel panel-primary">
                         <div class="panel-heading">Publish</div>
                         <div class="panel-body">

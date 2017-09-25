@@ -212,11 +212,12 @@ class PostController extends Controller
         if ($post) {
             session()->flash('message.content', 'Your post has been created successfully at <a href="' . $this->url() . '">' . $this->url() . '</a>');
             session()->flash('message.type', 'text-success');
-            return response()->redirectToRoute('post.new');
+            return response()->redirectToRoute('post.edit', $post->id);
         } else {
             session()->flash('message.content', 'There is an issue creating your post, please try again');
             session()->flash('message.type', 'text-danger');
             return response()
+                ->withInput()
                 ->redirectToRoute('post.new');
         }
     }
