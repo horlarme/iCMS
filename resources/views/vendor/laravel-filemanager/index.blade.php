@@ -137,8 +137,8 @@
 
   <script src="{{ asset('js/jquery-1.10.2.js') }}"></script>
   <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js') }}"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js') }}"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
   <script src="{{ asset('vendor/laravel-filemanager/js/cropper.min.js') }}"></script>
   <script src="{{ asset('vendor/laravel-filemanager/js/jquery.form.min.js') }}"></script>
   <script>
@@ -151,7 +151,7 @@
   {{-- <script src="{{ asset('vendor/laravel-filemanager/js/script.js') }}"></script> --}}
   <script>
     $.fn.fab = function () {
-      var menu = this;
+      var menu = this;x
       menu.addClass('mfb-component--br mfb-zoomin').attr('data-mfb-toggle', 'hover');
       var wrapper = menu.children('li');
       wrapper.addClass('mfb-component__wrap');
