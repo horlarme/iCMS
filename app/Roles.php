@@ -24,6 +24,6 @@ class Roles extends Model
      * Pointing user role to its parent
      */
     public function role(){
-        return $this->belongsTo('App\Role', 'role');
+        return $this->belongsTo(Role::class, 'role_id');
     }
 }

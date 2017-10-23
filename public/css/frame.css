@@ -1,0 +1,535 @@
+/* 
+
+    Author      :   HorlarME
+    Website     :   MeetWEBonline.com
+    Version     :   1.0
+    Descriptiuon:   This stylesheet is made for easy use on website to make the design more simple and easy.
+    Copyright   :   This stylesheet is a property of Lawal Oladipupo, for personal use only. Please be aware that you'll have to face any penalty given to you when caught using the style!
+
+*/
+@font-face {
+    font-family: 'UbuntuMono';
+    src: url(fonts/Ubuntu-mono.ttf) format('truetype');
+}
+body{
+    font-family: 'UbuntuMono';
+    line-height: 1.5;
+    font-size: 11pt;
+    padding: 0px;
+    margin: 0px
+}
+*{
+    font-family: 'UbuntuMono';
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+div{
+    display: block;
+    padding-top: 0px;
+}
+.formBox{
+    width: 100%;
+}
+.row{
+}
+.inputBox, select, input, textarea{
+    font-family: 'UbuntuMono';
+    font-size: 100%;
+    padding: 10px 15px;
+    border: rgba(0,0,0,0.5) thin solid;
+    color: black;
+    border-radius: 5px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    transition: cubic-bezier(0, 1.69, 0.2, 1) all 0.3s;
+    -moz-transition: cubic-bezier(0, 1.69, 0.2, 1) all 0.3s;
+    -webkit-transition: cubic-bezier(0, 1.69, 0.2, 1) all 0.3s;
+}
+label{
+    padding: 10px 0;
+}
+a{
+    display: inline-block;
+}
+.inputBox:focus,input:focus{
+    box-shadow: 0px 0px 2px blue inset;
+    -moz-box-shadow: 0px 0px 2px blue inset;
+    -webkit-box-shadow: 0px 0px 2px blue inset;
+}
+input[type=radio]{
+    width: 15px;
+}
+.text_danger{
+    color: red;
+}
+.danger{
+    background-color: transparent;
+    border: red 1.5px solid;
+    box-shadow: 0px 0px 2.5px red;
+    -webkit-box-shadow: 0px 0px 2.5px red;
+    -moz-box-shadow: 0px 0px 2.5px red;
+}
+.text-success{
+    color: green;
+    text-shadow: 0 0 5px green;
+}
+h1, .h1 {
+  font-size: 36px;
+}
+h2, .h2 {
+  font-size: 30px;
+}
+h3, .h3 {
+  font-size: 24px;
+}
+h4, .h4 {
+  font-size: 18px;
+}
+h5, .h5 {
+  font-size: 14px;
+}
+h6, .h6 {
+  font-size: 12px;
+}
+.success{
+    background-color: transparent;
+    border: green 1.5px solid;
+    box-shadow: 0px 0px 2.5px green;
+    -webkit-box-shadow: 0px 0px 2.5px green;
+    -moz-box-shadow: 0px 0px 2.5px green;
+}
+.rounded{
+    border-radius: 5em;
+    -webkit-border-radius: 5em;
+    -moz-border-radius: 5em;
+}
+input[type=checkbox]{
+    width: auto;
+    margin-right: 10px
+}
+.button, button{
+    padding: 10px 15px;
+    background-color: black;
+    font-family: 'UbuntuMono';
+    border: none;
+    border-radius: 6px;
+    background-image: linear-gradient(to bottom, #6D8CAA 10%, #03417D 90%);
+    -webkit-background-image: linear-gradient(to bottom, #6D8CAA 10%, #03417D 90%);
+    -moz-background-image: linear-gradient(to bottom, #6D8CAA 10%, #03417D 90%);
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    text-shadow: 0.5px 0.5px 1px black;
+    box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.15);
+    -webkit-box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.15);
+    -moz-box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 100%;
+    text-decoration: none;
+    font-weight: normal;
+    cursor: pointer;
+    display: inline-block;
+    margin: 5px 0px
+}
+.button_rounded{
+    border-radius: 1em;
+}
+.button_danger{
+    background-image: linear-gradient(to bottom, #DB6767 10%, #C63535 90%);
+    -moz-background-image: linear-gradient(to bottom, #DB6767 10%, #C63535 90%);
+    -webkit-background-image: linear-gradient(to bottom, #DB6767 10%, #C63535 90%);
+    background-repeat: no-repeat;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.22);
+    color: white;
+    border-radius: 6px
+}
+.button_danger:hover{
+    border-bottom: transparent 0px solid;
+    background-image: linear-gradient(to bottom, #EA7171 1%, #E03B3B 90%);
+    -webkit-background-image: linear-gradient(to bottom, #EA7171 1%, #E03B3B 90%);
+    -moz-background-image: linear-gradient(to bottom, #EA7171 1%, #E03B3B 90%);
+}
+.button_danger:focus{
+    background-image: linear-gradient(to bottom, #9F5C5C 1%, #690B0B 90%);
+    -webkit-background-image: linear-gradient(to bottom, #9F5C5C 1%, #690B0B 90%);
+    -moz-background-image: linear-gradient(to bottom, #9F5C5C 1%, #690B0B 90%);
+}
+.button_success{
+    background-image: linear-gradient(to bottom, #73C067 1%, #35800F 90%);
+    -webkit-background-image: linear-gradient(to bottom, #73C067 1%, #35800F 90%);
+    -moz-background-image: linear-gradient(to bottom, #73C067 1%, #35800F 90%);
+    color: white;
+    text-shadow: 0px 0px 0.5px #4AB115;
+}
+.button_success:hover{
+    border-bottom: transparent 0px solid;
+    background-image: linear-gradient(to bottom, #92DE87 1%, #35870A 90%);
+    -moz-background-image: linear-gradient(to bottom, #92DE87 1%, #35870A 90%);
+    -webkit-background-image: linear-gradient(to bottom, #92DE87 1%, #35870A 90%);
+}
+.button_success:focus{
+    background-image: linear-gradient(to bottom, rgb(87, 120, 82) 1%, rgb(43, 104, 12) 90%);
+    -webkit-background-image: linear-gradient(to bottom, rgb(87, 120, 82) 1%, rgb(43, 104, 12) 90%);
+    -moz-background-image: linear-gradient(to bottom, rgb(87, 120, 82) 1%, rgb(43, 104, 12) 90%)
+}
+.button_circle{
+    border-radius: 130em
+}
+.button_underlined{
+    background: none;
+    border-radius: 0px;
+    border-bottom: 2px transparent solid;
+    color: black;
+    text-shadow: none;
+    box-shadow: 0px 0px 0px transparent;
+}
+.button_underlined:hover{
+    border-bottom: 2px rgb(0,0,25) solid;
+}
+.active{
+    border-bottom: black 2px solid;
+}
+.footer{
+    background-color: rgba(0,0,0,0.5);
+    padding: 10px 30px;
+    text-align: left;
+    font-size: 14pt;
+    line-height: 1.5;
+    color: white
+}
+/* This is a mobile first design, meaning the first design is for mobiles while others will be for
+Tablets, Mini Laptops, Laptops and Desktops */
+.size-sd-1,.size-sd-2,.size-sd-3,.size-sd-4,.size-sd-5,.size-sd-6,.size-sd-7,.size-sd-8,.size-sd-9,.size-sd-10,.size-sd-11{
+    float:left;
+    padding: 5px 10px
+}
+
+.size-sd-12{
+    width:100%
+}
+
+.size-sd-11{
+    width:91.66666667%
+}
+
+.size-sd-10{
+    width:83.33333333%
+}
+
+.size-sd-9{
+    width:75%
+}
+
+.size-sd-8{
+    width:66.66666667%
+}
+
+.size-sd-7{
+    width:58.33333333%
+}
+
+.size-sd-6{
+    width:50%
+}
+
+.size-sd-5{
+    width:41.66666667%
+}
+
+.size-sd-4{
+    width:33.33333333333333%
+}
+
+.size-sd-3{
+    width:25%
+}
+
+.size-sd-2{
+    width:16.66666667%
+}
+
+.size-sd-1{
+    width:8.33333333%
+}
+/* Mobile Devices e.g. Android Devices, Lumia etc. */
+@media screen and (max-width: 320px){
+    .size-md-1,.size-md-2,.size-md-3,.size-md-4,.size-md-5,.size-md-6,.size-md-7,.size-md-8,.size-md-9,.size-md-10,.size-md-11{
+        float:left;
+        padding: 5px 10px
+    }
+
+    .size-md-12{
+        width:100%
+    }
+
+    .size-md-11{
+        width:91.66666667%
+    }
+
+    .size-md-10{
+        width:83.33333333%
+    }
+
+    .size-md-9{
+        width:75%
+    }
+
+    .size-md-8{
+        width:66.66666667%
+    }
+
+    .size-md-7{
+        width:58.33333333%
+    }
+
+    .size-md-6{
+        width:50%
+    }
+
+    .size-md-5{
+        width:41.66666667%
+    }
+
+    .size-md-4{
+        width:33.33333333333333%
+    }
+
+    .size-md-3{
+        width:25%
+    }
+
+    .size-md-2{
+        width:16.66666667%
+    }
+
+    .size-md-1{
+        width:8.33333333%
+    }
+}
+/* Tablet Devices e.g. Tecno 7D, etc. */
+@media screen and (min-width: 480px ){
+    .size-td-1,.size-td-2,.size-td-3,.size-td-4,.size-td-5,.size-td-6,.size-td-7,.size-td-8,.size-td-9,.size-td-10,.size-td-11{
+        float:left;
+        padding: 5px 10px
+    }
+
+    .size-td-12{
+        width:100%
+    }
+
+    .size-td-11{
+        width:91.66666667%
+    }
+
+    .size-td-10{
+        width:83.33333333%
+    }
+
+    .size-td-9{
+        width:75%
+    }
+
+    .size-td-8{
+        width:66.66666667%
+    }
+
+    .size-td-7{
+        width:58.33333333%
+    }
+
+    .size-td-6{
+        width:50%
+    }
+
+    .size-td-5{
+        width:41.66666667%
+    }
+
+    .size-td-4{
+        width:33.33333333333333%
+    }
+
+    .size-td-3{
+        width:25%
+    }
+
+    .size-td-2{
+        width:16.66666667%
+    }
+
+    .size-td-1{
+        width:8.33333333%
+    }
+}
+/* Large Displays e.g. Laptops and Desktops */
+@media screen and (min-width: 901px){
+    .size-ld-1,.size-ld-2,.size-ld-3,.size-ld-4,.size-ld-5,.size-ld-6,.size-ld-7,.size-ld-8,.size-ld-9,.size-ld-10,.size-ld-11{
+        float:left;
+        padding: 5px 10px
+    }
+
+    .size-ld-12{
+        width:100%
+    }
+
+    .size-ld-11{
+        width:91.66666667%
+    }
+
+    .size-ld-10{
+        width:83.33333333%
+    }
+
+    .size-ld-9{
+        width:75%
+    }
+
+    .size-ld-8{
+        width:66.66666667%
+    }
+
+    .size-ld-7{
+        width:58.33333333%
+    }
+
+    .size-ld-6{
+        width:50%
+    }
+
+    .size-ld-5{
+        width:41.66666667%
+    }
+
+    .size-ld-4{
+        width:33.33333333333333%
+    }
+
+    .size-ld-3{
+        width:25%
+    }
+
+    .size-ld-2{
+        width:16.66666667%
+    }
+
+    .size-ld-1{
+        width:8.33333333%
+    }
+}
+.clear-float{
+    float: none;
+    clear: both
+}
+.formBox{
+    padding: 5px 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 10px
+}
+.label{
+    font-family: 'UbuntuMono';
+    font-size: 100%;
+    padding: 10px 15px;
+    color: green;
+}
+hr{
+    height: auto;
+    border: red thin solid;
+    background-color: red;
+    color: red;
+    margin: auto auto;
+    width: 95%;
+}
+h1,h2,h3,h4,h5,h6,p{
+    margin: 15px auto;
+}
+.drop_menu{
+    list-style: none;
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 13pt;
+    text-align: left;
+    float: left;
+    margin: 90px;
+}
+.drop_menu > .drop_list{
+    width: auto;
+    display: none;
+    max-width: 200px;
+    margin: 5px 0px;
+    font-size: 100%;
+    border-radius: 0px;
+    border-bottom-right-radius: 1em;
+    background-color: #96D1CC;
+    list-style: none;
+    position: absolute;
+    height: auto;
+    margin-left: -10px
+}
+.drop_menu > .drop_list > li, li[class=drop_list]{
+    margin-left: -40px;
+}
+.drop_menu > .drop_list > .drop_menu{
+    float: none
+}
+.drop_menu > .drop_list > .drop_menu > .drop_list{
+    left: 150px;
+    margin-left: 0px;
+    margin-top: -31px
+}
+.drop_list > *{
+    text-decoration: none;
+    list-style: none;
+    transition: all linear 0.9s;
+    -webkit-transition: all linear 0.9s;
+    -moz-transition: all linear 0.9s;
+}
+.drop_menu > .drop_list > .drop_item:hover{
+    background-color: white;
+}
+.drop_menu > .drop_list > .drop_item{
+    display: block;
+    padding: 5px 15px;
+    border-bottom: thin solid black;
+}
+.drop_menu > .drop_list > .drop_item:nth-last-child(1){
+    border-bottom: none;
+    border-bottom-right-radius: 1em;
+}
+.drop_menu:hover{
+    background-color: white
+}
+.drop_menu:hover > .drop_list{
+    display: block;
+}
+.align-center{
+    text-align: center;
+}
+.align-right{
+    text-align: right
+}
+.align-left{
+    text-align: left
+}
+.align-justify{
+    text-align: justify
+}
+.center{
+    margin-right: auto;
+    margin-left: auto;
+}
+.float-left{
+    float: left
+}
+.float-right{
+    float: right;
+}
+.btntotext{
+    border: none;
+    background: none;
+    cursor: default;
+}

@@ -1,0 +1,857 @@
+/* Default styles for mobile devices */
+/* This style sheet is made to make the website a mobile friendly page.*/
+/* Making the website to support both mobile and desktop devices. */
+body {
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    width: 100%;
+    max-width: 100%;
+    font-size: 90%;
+}
+
+@media only screen and (min-width: 600px) {
+    .logo {
+        width: 340px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+div, p {
+    text-decoration: none;
+    font-size: 100%;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+a:link, a:visited, a:active {
+    color: blue;
+    text-decoration: none;
+}
+
+.head-section {
+    background-color: white;
+    padding-top: 5px;
+    padding-bottom: 0px;
+    text-align: center;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.48);
+    transition: height 0.2s ease-in-out;
+    -moz-transition: height 0.2s ease-in-out;
+    -webkit-transition: height 0.2s ease-in-out;
+}
+
+.head-section > .logo {
+    text-align: center;
+}
+
+.navigation {
+    margin: 0px;
+    padding: 10px;
+    background-color: #313131;
+}
+
+.navigation-container {
+    background-color: #313131;
+}
+
+.navigation > a {
+    font-weight: normal;
+    background-color: #313131;
+    margin: 0px;
+    color: white;
+    border-bottom: transparent 2.6px solid;
+    display: block;
+    text-align: left;
+    font-size: 110%;
+    padding: 10px;
+}
+
+.navigation .icon {
+    color: white;
+}
+
+.navigation > a:hover {
+    border-bottom: white 2.6px solid;
+}
+
+.navigation-container .navigation-background,
+.navigation-container .navigation-button {
+    display: none;
+}
+
+.navigation-container .navigation-background {
+    background-color: rgba(0, 0, 0, 0.44);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.navigation-container .navigation {
+    height: 100%;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.navigation-container .searchPanel {
+    padding: 10px;
+}
+
+.navigation-container .navigation-button {
+    z-index: 10;
+    color: white;
+    display: block;
+    position: absolute;
+    right: 5%;
+    top: 10px;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    line-height: 0;
+}
+
+.navigation-container .navigation-button i {
+    font-size: 35px;
+    padding: 0;
+    margin: 0;
+}
+
+.navigation-container .navigation-button .closeButton {
+    position: fixed;
+    top: 10px;
+    right: 5%;
+    display: none;
+}
+
+.navigation-container .navigation-button .openButton {
+    color: black;
+}
+
+.navigation {
+    overflow-y: scroll;
+}
+
+.searchPanel {
+    background-color: #313131;
+    transition: max-height 1.5s;
+    -moz-transition: max-height 1.5s;
+    -webkit-transition: max-height 1.5s;
+    overflow: hidden;
+    padding: 0px 10px 10px;
+    text-align: center;
+}
+
+@media only screen and (min-width: 700px) {
+    .navigation-container .navigation {
+        display: inline-block;
+        overflow: hidden;
+        position: inherit;
+        height: inherit;
+    }
+
+    .navigation-container .navigation-button {
+        display: none;
+    }
+
+    .navigation-container .navigation a {
+        display: inline-block;
+        font-size: 100%;
+        padding: 5px;
+    }
+
+    .searchPanel {
+        padding: 10px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+
+    .scrolled .head-section {
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+
+    .scrolled .body-section {
+        margin-top: 64px;
+    }
+
+    .scrolled .searchPanel {
+        display: none;
+    }
+}
+
+.panel {
+    background-color: rgba(0, 0, 0, 0.04);
+    padding: 0px;
+    overflow: hidden
+}
+
+.mostRecentPost {
+    text-align: center;
+}
+
+.mostRecentPost .post {
+    width: 100%;
+    float: left;
+}
+
+.mostRecentPost .post > .postLabel {
+    margin: 0px;
+    padding: 5px;
+    position: relative;
+    display: none;
+    top: 0px;
+}
+
+.post .blogTitle:hover {
+    border-bottom: thin dotted black;
+    color: black;
+}
+
+.post .blogTitle {
+    border-bottom: thin solid transparent;
+    font-size: 120%;
+    font-family: "Ubuntu";
+    text-align: left;
+}
+
+.post {
+    transition: linear all 0.2s;
+    -webkit-transition: linear all 0.2s;
+    -moz-transition: linear all 0.2s;
+    text-align: center;
+}
+
+.postImage {
+    width: 100%;
+    border-radius: 0.3em;
+    overflow: hidden;
+    height: 200px;
+    transition: linear all 0.2s;
+    -webkit-transition: linear all 0.2s;
+    -moz-transition: linear all 0.2s;
+}
+
+.post:hover > .blogTitle {
+    font-weight: bold;
+    width: 100%;
+    color: black;
+    font-size: 110%;
+    text-align: center;
+}
+
+.post:hover > .postImage {
+    background-size: 110%;
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent
+}
+
+@media only screen and (max-width: 600px) {
+    .postImage {
+        height: 120px;
+    }
+}
+
+.postDisplayControl > div:hover, .postDisplayControl .size-sd-8 {
+    background-color: rgba(0, 0, 0, 0.87);
+    color: white;
+}
+
+.postDisplayControl > .list-button, .postDisplayControl > .grid-button {
+    cursor: pointer;
+}
+
+.postDisplayControl .active {
+    background-color: black;
+    border-bottom: rgba(255, 255, 255, 0.5) thick solid;
+    color: white;
+}
+
+.postDisplayControl {
+    font-size: 110%;
+    text-align: center;
+}
+
+.mostRecentPost .post > .list {
+    display: inline-block;
+    border-bottom: thin solid rgba(0, 0, 0, 0.05);
+    padding: 15px 10px;
+    margin: 10px auto;
+}
+
+.mostRecentPost .post > .list .blogImage {
+    width: 30%;
+    margin: 2.5% 1.5%;
+}
+
+.mostRecentPost .post > .list img {
+    width: 100%;
+}
+
+.mostRecentPost .post > .list > .content {
+    box-sizing: border-box;
+    float: right;
+    width: 60%;
+    margin-left: 1.5%;
+}
+
+.mostRecentPost .post > .grid {
+    display: none;
+    width: 100%;
+    padding: 8px;
+    text-align: center;
+}
+
+.mostRecentPost .post > .list .blogTitle:hover {
+    border-bottom: thin dotted #050505;
+}
+
+.mostRecentPost .post > .list .blogTitle {
+    width: 100%;
+    font-family: 'Lucida Console';
+    font-size: 120%;
+    margin-bottom: 0px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.mostRecentPost .post > .list .blogDescription {
+    font-size: 100%;
+    margin-top: 5px;
+    text-align: left;
+}
+
+.advert {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    margin: 10px auto;
+    min-height: 5px;
+}
+
+.advert img {
+    width: 100%;
+}
+
+.mostRecentPost > .post {
+    width: 100%;
+    float: none;
+}
+
+.list > .content > .info {
+    width: 100%;
+    background-color: transparent;
+    padding: 0px;
+    margin: 0px;
+    border-top: 1px dotted black;
+    padding-top: 5px;
+}
+
+.list > .content > .info > .text {
+    padding: 5px;
+    margin: 0px;
+    float: left;
+    font-size: 85%;
+    color: black;
+    text-shadow: 0 0 0.1px black;
+    border-bottom: thin transparent solid;
+}
+
+.list > .content > .info > .text:hover {
+    color: blue;
+    border-bottom: thin dotted blue;
+}
+
+.right-section {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.recentPosts > .content {
+    text-align: left;
+    font-size: 100%;
+    float: none;
+}
+
+.tags {
+    text-align: center;
+}
+
+.right-section .header:after {
+    content: "";
+    display: block;
+    border-bottom: 3px red solid;
+    width: 40%;
+}
+
+.right-section .header {
+    padding: 5px;
+    margin: 0px;
+    background-color: transparent;
+    color: black;
+    font-family: inherit;
+    text-shadow: 0px 0px 3px white;
+    text-align: left;
+    max-width: 100%;
+}
+
+.tags > .content > a:hover {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+}
+
+.tags > .content > a {
+    font-size: 90%;
+    padding: 5px;
+    margin: 5px 2.5px;
+    text-align: center;
+    text-decoration: underline;
+    color: black;
+    border: rgba(0, 100, 255, 0.7) 1.5px solid;
+    text-shadow: 0px 0px 1px white;
+    background-color: rgba(0, 0, 255, 0.4);
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+}
+
+.right-section > .content {
+    background-color: white;
+    padding: 10px 15px 15px;
+    margin: 0px;
+}
+
+.right-section > div > .content {
+    background-color: white;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding: 15px;
+    text-align: justify;
+}
+
+.right-section .tags .content {
+    text-align: center;
+}
+
+.foot-section {
+    width: 100%;
+    text-align: center;
+    padding: 60px 10px;
+    background-color: black;
+}
+
+.foot-section * {
+    color: white;
+}
+
+.foot-section p {
+    margin: 5px;
+}
+
+.foot-section .links a {
+    transition: background ease 1s;
+    border-bottom: 3px solid transparent;
+}
+
+.foot-section .links a:hover {
+    border-bottom: 3px solid;
+}
+
+.foot a {
+    color: white;
+}
+
+.pagination {
+    padding: 0px 10px 5px;
+    margin: 0px;
+}
+
+.pagination > .button {
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border-color: transparent;
+    background-image: none;
+}
+
+.foot-section > .content > .links > ul > li {
+    float: left;
+    list-style: none;
+    margin: 0px 10px;
+}
+
+.foot-section > .content > .links > ul {
+    margin: 0px;
+}
+
+.foot-section > .content > .links > h6 {
+    margin: 0px;
+}
+
+@media only screen and (min-width: 600px) {
+    .body-section {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .list > .content > .info {
+        width: 100%;
+        margin-top: 8%;
+        margin-left: 0px;
+    }
+
+    .list > .content > .content {
+        width: 100%;
+        display: inline-block;
+    }
+
+    .list > .content > .info > .text {
+        float: none;
+        display: inline-block;
+    }
+}
+
+.body-section {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media only screen and (min-width: 800px) {
+    .body-section {
+        width: 80%;
+    }
+
+    .body-section > .main-section {
+        width: 65%;
+        border-radius: 3px;
+        float: left;
+    }
+
+    .body-section > .right-section {
+        width: 35%;
+        float: right;
+        padding: 10px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .mostRecentPost .post > .list .blogTitle {
+        font-size: 130%;
+        font-weight: bold
+    }
+
+    .mostRecentPost .post > .list .blogDescription {
+        font-size: 14px;
+    }
+
+    .mostRecentPost .post {
+        float: left;
+        width: 100%;
+        display: inline-block;
+    }
+}
+
+@media only screen and (min-width: 0px) {
+    .mostRecentPost .gridView {
+        width: 50%;
+        float: left;
+    }
+}
+
+.recentPosts .rPost {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left;
+    display: block;
+}
+
+.recentPosts .rPost:hover {
+    text-decoration: underline;
+    color: black;
+}
+
+.recentPosts .rPost:hover > span {
+    display: inline-block;
+}
+
+.recentPosts .rPost > span {
+    display: none;
+    font-size: 80%
+}
+
+.comments {
+    padding: 15px;
+}
+
+.comments .comment .name {
+    font-size: 12pt;
+}
+
+.comments .comment .comment {
+    width: 90%;
+    padding: 0;
+}
+
+.comments .name:after {
+    width: 50px;
+    min-height: 0.1px;
+    display: block;
+    content: "";
+    border-bottom: blue 2px solid;
+}
+
+.searchPanel .formBox {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+.tagbox, .search-box {
+    width: 75%;
+    float: left;
+    display: inline-block;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-right: 0 solid transparent;
+}
+
+.tagbutton, .search-button {
+    width: 25%;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    margin: 0;
+    color: #fbf4f4;
+    border-color: grey;
+    border-left: 0 solid transparent;
+}
+
+.search-button {
+    -webkit-border: rgb(3, 65, 125) thin solid;
+}
+
+.error {
+    width: 100%;
+    text-align: center;
+    color: red;
+    text-shadow: 0 0 5px red;
+}
+
+a[class=footer_facebook] {
+    color: blue;
+}
+
+a[class=footer_facebook]:hover {
+    border-bottom-color: blue;
+}
+
+a[class=footer_instagram] {
+    color: red;
+}
+
+a[class=footer_twitter] {
+    color: green;
+}
+
+.about-us {
+    padding: 10px 20px;
+}
+
+.contactForm hr {
+    color: whitesmoke;
+    border-color: whitesmoke;
+}
+
+.contactForm {
+    border-radius: 5px;
+    box-shadow: 0 0 12px black
+}
+
+.contactBackground {
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.contactForm {
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    margin: 2.5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 95%;
+    overflow-y: scroll;
+}
+
+.contactForm .closeButton {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px;
+    font-weight: bold;
+    border: thin solid black;
+}
+
+.contactForm .closeButton:hover {
+    border-color: transparent
+}
+
+.alert {
+    position: fixed;
+    top: 25%;
+    left: 5%;
+    width: 90%;
+    overflow: hidden;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.alert .body {
+    width: 100%;
+    padding: 20px 20px;
+    font-size: 12pt;
+}
+
+.alert.success > .body {
+    background-color: #3c763d;
+}
+
+.alert.error > .body {
+    background-color: red;
+}
+
+.alert > .fi-x {
+    position: absolute;
+    width: 10px;
+    color: white;
+    cursor: pointer;
+    right: 10px;
+}
+.pagination .currentPage{
+    background-image: none;
+    background-color: rgba(0,0,0,0.6);
+}
+
+/*POST VIEW STYLE*/
+
+.post {
+    text-align: left;
+    padding: 10px 20px;
+}
+
+.posthead {
+}
+
+.posthead .posttitle {
+    text-transform: uppercase;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.posthead .postinfo {
+    font-size: 90%;
+    border-bottom: solid 3px rgb(255, 10, 10);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.posthead .postinfo a:hover, .posthead .postinfo a:focus {
+    border-bottom: dashed thin blue;
+}
+
+.posthead .postinfo a, .posthead .postinfo a {
+    border-bottom: dashed thin transparent;
+}
+
+.posthead .postimage {
+    background-size: 100%;
+    height: 200px;
+    margin-bottom: -50px;
+    width: 100%;
+}
+
+.posthead .otherdevices {
+    display: none;
+}
+
+@media only screen and (min-width: 768px) {
+    .posthead {
+        padding-top: 10px;
+    }
+
+    .posthead .posttitle {
+        padding-left: 10px;
+        color: black;
+        font-size: 250%;
+        margin-top: -0px;
+    }
+
+    .posthead .mobile {
+        display: none;
+    }
+
+    .posthead .otherdevices img {
+        width: 100%;
+        margin-top: -50px;
+    }
+
+    .posthead .otherdevices {
+        overflow: hidden;
+        display: block;
+    }
+}
+
+.pagemovement {
+    border-bottom: thin solid black;
+}
+
+.post-tag a:hover {
+    color: white;
+}
+.post-tag a {
+    color: white;
+    padding: 1.5px 10px;
+    background-color: #03455f;
+}
+
+@media (max-width: 767px) {
+    table {
+        width: 100%;
+        margin-bottom: 15px;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+        border: 1px solid #ddd;
+    }
+}
+
+.post .post-tag{
+    clear: both;
+}
+.post video,
+.post img,
+.post source{
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+}
+
+/*POST VIEW STYLE*/

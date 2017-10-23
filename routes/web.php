@@ -2,15 +2,22 @@
 //The Main Application which is accessible for the user/end user
 Route::prefix('/')->group(function () {
 //    Home page link
-    Route::get('', function () {
-        echo "<a href='" . route('login') . "'>Login</a>";
+    Route::get('', [
+        'as' => 'home',
+        'uses' => 'PageController@home'
+    ]);
+
+    Route::get('{url]', 'PageController@home')->name('post');
+
+    Route::prefix('category')->group(function(){
+        Route::get('{name}', 'PageController@home')->name('category');
     });
 });
 
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
-Route::group(['prefix' => '/advance', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => '/advance', 'middleware' => ['auth']], function () {
 
     Route::get('', 'PageController@index')->name('dashboard');
 
@@ -35,7 +42,7 @@ Route::group(['prefix' => '/advance', 'middleware' => 'auth'], function () {
     //Pages
     Route::group(['prefix' => 'page'], function () {
         Route::get('', 'PagesController@index')->name('pages');
-        Route::get('/new', 'PagesController@newPage')->name('page.new');
+        Route::get('/new', 'PagesController@newPage')->name('page.new')->middleware('restrict');
         Route::post('/new', 'PagesController@create')->name('page.create');
         Route::get('/deleted', 'PagesController@deleted')->name('page.deleted');
         Route::get('/{id}/edit', 'PagesController@edit')->name('page.edit');

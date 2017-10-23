@@ -1,0 +1,31 @@
+/* Default styles for mobile devices */
+/* This style sheet is made to make the website a mobile friendly page.*/
+/* Making the website to support both mobile and desktop devices. */
+
+/* This style has been edited to work with the post creation page */
+@media only screen and (min-width: 800px){
+    .body-section{
+        width: 80%;
+    }
+    .body-section > form > .main-section{
+        width:65%;
+        border-radius: 3px;
+        float: left;
+    }
+    .body-section > form > .right-section{
+        width: 35%;
+        float: right;
+        padding: 10px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+.blogdescription{
+    height: 125px;
+    resize: none;
+}
+.blogdescrip, .suggestedURL{
+    margin: 0;
+    width: 100%;
+    padding: 0;
+}

@@ -16,7 +16,7 @@ class roleController extends Controller
     {
         //Check for role or assign role?
         if (is_null($role)) {
-            return Roles::where('user_id', $user_id)->firstOrFail()->role()->name;
+            return Roles::where('user_id', $user_id)->with('role')->firstOrFail()->role->name;
         } else {
             //Assign Role
             //Checking if the user has a role already
