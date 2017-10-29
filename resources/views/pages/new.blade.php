@@ -72,13 +72,12 @@
                         tinymce.init({
                             selector: '.editor',
                             inline: false,
-                            plugins: 'fullscreen fullpage hr image layer link lists media paste preview save spellchecker table textcolor emoticons autolink wordcount anchor autolink code colorpicker imagetools visualchars contextmenu responsivefilemanager',
+                            plugins: 'fullscreen hr image link advlist media paste preview save spellchecker table textcolor emoticons autolink wordcount anchor autolink code legacyoutput colorpicker visualblocks imagetools visualchars contextmenu responsivefilemanager',
                             theme: 'modern',
-                            toolbar: 'undo redo | hr bold italic underline superscript subscript textcolor link | alignleft aligncenter alignright alignjustify | paragraph blockquote pre div | code save | lists table link media image imagetools | fullscreen spellchecker',
+                            toolbar: 'fontselect fontsizeselect | visualblocks | undo redo | hr bold italic underline superscript subscript textcolor link | alignleft aligncenter alignright alignjustify | paragraph blockquote pre div  | code preview save | template bullist numlist table link media image imagetools | fullscreen spellchecker',
                             file_browser_callback: function (field_name, url, type, win) {
                                 var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
                                 var y = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
-
                                 var cmsURL = '{{ url(config('lfm.prefix')) }}?field_name=' + field_name;
                                 if (type == 'image') {
                                     cmsURL = cmsURL + "&type=Images";
@@ -95,7 +94,7 @@
                                     close_previous: "no"
                                 });
                             },
-                            menubar: true,
+                            menubar: false,
                             height: height
                         });
                     </script>
@@ -111,27 +110,25 @@
                             <input type="submit" name="action" class="form-control btn btn-success publish"
                                    value="Publish"/>
                             {{--<div class="schedulePost" style="display: none;">--}}
-                                {{--<p>Publish this post on the following information.</p>--}}
-                                {{--<label for="scheduleDate" class="col-xs-3">Date:</label>--}}
-                                {{--<input type="date" name="scheduleDate" class="col-xs-9"/>--}}
-                                {{--<div class="clearfix"></div>--}}
-                                {{--<label for="scheduleTime" class="col-xs-3">Time:</label>--}}
-                                {{--<input type="time" name="scheduleTime" class="col-xs-9"/>--}}
+                            {{--<p>Publish this post on the following information.</p>--}}
+                            {{--<label for="scheduleDate" class="col-xs-3">Date:</label>--}}
+                            {{--<input type="date" name="scheduleDate" class="col-xs-9"/>--}}
+                            {{--<div class="clearfix"></div>--}}
+                            {{--<label for="scheduleTime" class="col-xs-3">Time:</label>--}}
+                            {{--<input type="time" name="scheduleTime" class="col-xs-9"/>--}}
 
-                                {{--<input type="submit" class="col-xs-12 schedulePostButton btn btn-primary"--}}
-                                       {{--value="Schedule" name="action"/>--}}
+                            {{--<input type="submit" class="col-xs-12 schedulePostButton btn btn-primary"--}}
+                            {{--value="Schedule" name="action"/>--}}
                             {{--</div>--}}
                             {{--<input type="submit" name="action" class="form-control btn-block col-xs-6"--}}
-                                   {{--value="Preview" style="color: blue;"/>--}}
+                            {{--value="Preview" style="color: blue;"/>--}}
                             {{--<input type="submit" name="action" class="form-control col-xs-6 btn-block"--}}
-                                   {{--value="Draft" style="color: blue;"/>--}}
-                        {{--</div>--}}
-                        <div class="clearfix"></div>
+                            {{--value="Draft" style="color: blue;"/>--}}
+                            {{--</div>--}}
+                            <div class="clearfix"></div>
+                        </div>
                     </div>
-
-                </div>
-
-                <div class="clearfix"></div>
+                    <div class="clearfix"></div>
             </form>
         </div>
     </div>

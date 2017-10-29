@@ -144,7 +144,7 @@
                         <div class="panel-body">
                             <div class="form-group">
                                 <input type="text" name="tag" data-role="tagsinput"
-                                       placeholder="Separate Tags with comma ','"
+                                       placeholder="Separate Tags with comma ',' or Command (Enter) key"
                                        class="blogTag form-control">
                             </div>
                             <style>

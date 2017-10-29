@@ -47,7 +47,7 @@
                                    class="blogtitle form-control"
                                    placeholder="Enter post title"
                                    value="{{ !is_null(old('title')) ? old('title') : $post->title  }}"/>
-                            <p class="help-block suggestedURL clearfix"><a href="{{ $post->url }}">{{ $post->url }}</a>
+                            <p class="help-block suggestedURL clearfix"><a href="{{ route('post', $post->url) }}">{{ route('post', $post->url) }}</a>
                             </p>
                         </div>
                     </div>

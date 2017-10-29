@@ -27,7 +27,7 @@
                         <label class="col-md-2">Name:</label>
                         <div class="col-md-10">
                             <input type="text" name="name" class="update form-control"
-                                   value="{{ setting('name', $setting) }}"/>
+                                   value="{{ getApp('name') }}"/>
                             <p class="help-block">This will be the name the website displays.</p>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                         <label class="col-md-2">Description:</label>
                         <div class="col-md-10">
                             <textarea name="description" class="update form-control"
-                                      rows="3" maxlength="250">{{ setting('description', $setting) }}</textarea>
+                                      rows="3" maxlength="250">{{ getApp('description') }}</textarea>
                             <p class="help-block">This describe the website for search engines. It is advised to be kept
                                 at maximum of 250 characters.</p>
                         </div>
@@ -47,8 +47,17 @@
                         <label class="col-md-2">Keywords:</label>
                         <div class="col-md-10">
                             <input type="text" name="keywords" class="update form-control"
-                                   value="{{ setting('keywords', $setting) }}"/>
+                                   value="{{ getApp('keywords') }}"/>
                             <p class="help-block">Each keyword should be comma separated and should.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-2">Tag Line:</label>
+                        <div class="col-md-10">
+                            <input type="text" name="tagline" class="update form-control" maxlength="50"
+                                   value="{{ getApp('tagline') }}"/>
+                            <p class="help-block">This will be the text that serves as the motto of your website and will be by your site name.</p>
                         </div>
                     </div>
 
@@ -62,10 +71,10 @@
                         <label class="col-md-2">Registration:</label>
                         <div class="col-md-10">
                             <select name="user.register" class="update form-control">
-                                <option value="true" {{setting('user.register', $setting) === 'true' ? 'selected' : ''}}>
+                                <option value="true" {{getApp('user.register') === 'true' ? 'selected' : ''}}>
                                     Yes
                                 </option>
-                                <option value="false" {{setting('user.register', $setting) === 'true' ? '' : 'selected'}}>
+                                <option value="false" {{getApp('user.register') === 'true' ? '' : 'selected'}}>
                                     No
                                 </option>
                             </select>
@@ -81,16 +90,27 @@
                     <label class="col-md-2">Make your application not visible to search engines</label>
                     <div class="col-md-10">
                         <select name="search" class="update form-control">
-                            <option value="true" {{setting('search', $setting) === 'true' ? 'selected' : ''}}>
+                            <option value="true" {{getApp('search') === 'true' ? 'selected' : ''}}>
                                 Yes
                             </option>
-                            <option value="false" {{setting('search', $setting) === 'true' ? '' : 'selected'}}>
+                            <option value="false" {{getApp('search') === 'true' ? '' : 'selected'}}>
                                 No
                             </option>
                         </select>
-
                         <p class="help-block">This will make your website not to show on Google Search and other search
                             engines.</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h4><strong>Comments</strong></h4>
+                    <hr/>
+                    <label class="col-md-2">Disqus</label>
+                    <div class="col-md-10">
+                        <textarea name="disqus" class="update form-control" rows="3">{!! getApp('disqus')!!}</textarea>
+                        <p class="help-block">For a better comment system, we choose Disqus as the service for the site
+                            comment. <a href="">Click here</a> to get the code and paste into the field provided above.
+                        </p>
                     </div>
                 </div>
             </form>

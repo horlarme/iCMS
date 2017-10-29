@@ -19,18 +19,22 @@ if (!function_exists('userRole')) {
     function userRole($user_id, $value = null)
     {
         $role = new \App\Http\Controllers\RoleController();
-        return $role->userRole($user_id);
+        if (is_null($value)) {
+            return $role->userRole($user_id);
+        }
+        return $role->userRole($user_id, $role);
     }
 }
 
-if(!function_exists('getUser')){
+if (!function_exists('getUser')) {
     /**
      * Get a particular information about the current logged in user
      * Example: getUser('id') provides the ID of the current user
      * @param mixed $what What information about the user should be retrieved
      * @return mixed
      */
-    function getUser($what){
+    function getUser($what)
+    {
         if (auth()->check())
             return Auth()->user()->id;
         return false;
@@ -42,16 +46,31 @@ if (!function_exists('category')) {
      * Get Category using its name
      * or
      * Get All categories
+     * or
+     * Get category posts using its name
      * @param $name
      * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
      */
-    function category($name = false)
+    function category($name = false, $showPost = false)
     {
         $c = new \App\Category();
         if ($name) {
+            if ($showPost) {
+                return \App\Posts::with('author', 'category')
+                    ->where('category_id', category($name)->id)
+                    ->paginate(10);
+            }
             return $c->category($name);
         }
         return $c->orderBy('name')->get();
+    }
+}
+
+if(!function_exists('tag')){
+    function tag($tag){
+        return \App\Posts::with('author', 'category')
+            ->where('tags', "LIKE", "%" . $tag . "%")
+            ->paginate(10);
     }
 }
 
@@ -73,10 +92,11 @@ if (!function_exists('getApp')) {
     }
 }
 
-if(!function_exists('posts')){
-    function posts($limit = false){
-        if($limit){
-        return \App\Posts::orderBy('id')->limit($limit)->get();
+if (!function_exists('posts')) {
+    function posts($limit = false)
+    {
+        if ($limit) {
+            return \App\Posts::orderBy('id')->limit($limit)->get();
         }
         return \App\Posts::orderBy('id');
     }

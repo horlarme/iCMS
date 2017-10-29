@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\Http\Controllers\RoleController;
 use Closure;
 
 class Restriction
@@ -10,15 +9,15 @@ class Restriction
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        if(strtolower(userRole(getUser('id'))) != 'administrator'){
+        if (strtolower(userRole(getUser('id'))) != 'administrator') {
             return response()
-            ->make('You do not have access to perform this task!', 403);
+                ->make('You do not have access to perform this task!', 403);
         }
         return $next($request);
     }

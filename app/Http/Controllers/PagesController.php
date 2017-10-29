@@ -73,8 +73,6 @@ class PagesController extends Controller
             ]);
     }
 
-
-
     public function deleted()
     {
         $allPages = Pages::onlyTrashed()->paginate('15');
@@ -84,8 +82,8 @@ class PagesController extends Controller
     public function newPage()
     {
         $request = $this->request;
-        $title = $request->get('title') ? $request->get('title') : "";
-        return view('pages.new');
+        $title = $request->has('title') ? $request->get('title') : "";
+        return view('pages.new', compact('title'));
     }
 
     public function validatePage($unique = '')

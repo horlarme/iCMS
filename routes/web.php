@@ -7,17 +7,25 @@ Route::prefix('/')->group(function () {
         'uses' => 'PageController@home'
     ]);
 
-    Route::get('{url]', 'PageController@home')->name('post');
+    Route::get('blog/{postURL}', 'PageController@viewPost')->name('post');
 
-    Route::prefix('category')->group(function(){
-        Route::get('{name}', 'PageController@home')->name('category');
-    });
+    Route::get('category/{categoryName}', 'PageController@byCategory')->name('category');
+
+    Route::get('tag/{tag}', 'PageController@byTag')->name('tag');
 });
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
-Route::group(['prefix' => '/advance', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => '/advance', 'middleware' => 'auth'], function () {
+
+    Route::get('startApp', [
+        'as' => 'startApp',
+        'uses' => function () {
+            $laravelApplication = require __DIR__ . '/..//bootstrap/app.php';
+            $kernel = $laravelApplication->make(Illuminate\Contracts\Console\Kernel::class);
+            $kernel->handle($input = new Symfony\Component\Console\Input\ArgvInput(['artisan', 'serve']));
+        }
+    ])->middleware('restrict');
 
     Route::get('', 'PageController@index')->name('dashboard');
 
@@ -43,14 +51,14 @@ Route::group(['prefix' => '/advance', 'middleware' => ['auth']], function () {
     Route::group(['prefix' => 'page'], function () {
         Route::get('', 'PagesController@index')->name('pages');
         Route::get('/new', 'PagesController@newPage')->name('page.new')->middleware('restrict');
-        Route::post('/new', 'PagesController@create')->name('page.create');
+        Route::post('/new', 'PagesController@create')->name('page.create')->middleware('restrict');
         Route::get('/deleted', 'PagesController@deleted')->name('page.deleted');
         Route::get('/{id}/edit', 'PagesController@edit')->name('page.edit');
 
-        Route::post('/{id}/edit', 'PagesController@update')->name('page.update');
+        Route::post('/{id}/edit', 'PagesController@update')->name('page.update')->middleware('restrict');
         Route::delete('/{id}', 'PagesController@delete')->name('page.delete');
-        Route::get('/{id}', 'PagesController@restore')->name('page.restore');
-        Route::delete('/delete/{id}', 'PagesController@deleteDeleted')->name('page.deleteDeleted');
+        Route::get('/{id}', 'PagesController@restore')->name('page.restore')->middleware('restrict');
+        Route::delete('/delete/{id}', 'PagesController@deleteDeleted')->name('page.deleteDeleted')->middleware('restrict');
     });
     //Pages
 
@@ -81,7 +89,7 @@ Route::group(['prefix' => '/advance', 'middleware' => ['auth']], function () {
 /**
  * Possible Mistyped URLs
  */
-Route::any('dashboard', function (){
+Route::any('dashboard', function () {
     //Redirecting Users to the administration page
     return redirect()
         ->route('dashboard');

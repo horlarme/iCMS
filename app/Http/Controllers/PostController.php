@@ -150,7 +150,7 @@ class PostController extends Controller
 
     public function image()
     {
-        return is_null($this->request->get('image')) ? '' : url($this->request->get('image'));
+        return is_null($this->request->get('image')) ? 'default-blog-image.jpg' : url($this->request->get('image'));
     }
 
     public function tags()
@@ -165,7 +165,7 @@ class PostController extends Controller
 
     public function url()
     {
-        return strtolower(camel_case(url($this->title())));
+        return strtolower(camel_case($this->title()));
     }
 
     public function index()

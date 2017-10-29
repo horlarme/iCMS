@@ -1,4 +1,5 @@
 @extends('layout.site')
+@section('pageTitle') {{ getApp('name') . " - " . $categoryName}} @stop
 @section('pageContent')
     <div class="content">
         <div class="mostRecentPost">
@@ -12,7 +13,7 @@
 
             <!-- Displaying the post for the page -->
             <div class="posts" style="min-height: 400px;">
-                @php($posts = posts()->paginate(10))
+                @php($posts = category($categoryName, true))
                 @foreach($posts as $post)
                     <div class="post">
                         <div class="grid">

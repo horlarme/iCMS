@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Roles;
 
-class roleController extends Controller
+class RoleController extends Controller
 {
     /**
      * This function assign role to a user if the role parameter is returned

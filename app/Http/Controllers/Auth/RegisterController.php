@@ -44,10 +44,10 @@ class RegisterController extends Controller
          */
         $this->middleware('guest');
         if(setting('user.register', settingParent('app')) == 'false'){
-            echo "<h1 style='text-align:center;'>Access to registration page is not allowed, contact the administrator to register you!</h1>";
-            echo "<h1 style='text-align:center;'>Or login using the link below</h1>";
-            echo "<h1 style='text-align:center;'><a href='" . route('login') . "'>Log In</a> </h1>";
-            exit;
+            $o = "<h1 style='text-align:center;'>Access to registration page is not allowed, contact the administrator to register you!</h1>";
+            $o .= "<h1 style='text-align:center;'>Or login using the link below</h1>";
+            $o .= "<h1 style='text-align:center;'><a href='" . route('login') . "'>Log In</a> </h1>";
+            return $o;
         }
     }
 

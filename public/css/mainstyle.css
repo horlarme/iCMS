@@ -210,7 +210,6 @@ a:link, a:visited, a:active {
 }
 
 .post .blogTitle:hover {
-    border-bottom: thin dotted black;
     color: black;
 }
 
@@ -219,6 +218,12 @@ a:link, a:visited, a:active {
     font-size: 120%;
     font-family: "Ubuntu";
     text-align: left;
+}
+.post .grid .blogTitle{
+    height: 75px;
+    min-height: 30px;
+    max-height: 75px;
+    overflow: hidden;    
 }
 
 .post {
@@ -281,6 +286,7 @@ a:link, a:visited, a:active {
 
 .mostRecentPost .post > .list {
     display: inline-block;
+    width: 100%;
     border-bottom: thin solid rgba(0, 0, 0, 0.05);
     padding: 15px 10px;
     margin: 10px auto;
