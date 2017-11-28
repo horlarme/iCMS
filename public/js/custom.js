@@ -50,7 +50,7 @@
 
 
 /**
- * iCMS Javascript Starts Here
+ * Simply Javascript Starts Here
  * @author Lawal Oladipupo Olawunmi
  */
 //All Page Scripts

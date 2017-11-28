@@ -15,7 +15,7 @@ class SettingSeed extends Seeder
             [
                 'setting_id' => 1,
                 'name' => 'name',
-                'value' => 'iCMS'
+                'value' => 'Simply'
             ],
             [
                 'setting_id' => 1,

@@ -6,19 +6,19 @@
     <meta name="csrf-token" content="{{csrf_token()}}"/>
     <title>{{setting('name', settingParent('app'))}} | @yield('title')</title>
     <!-- BOOTSTRAP STYLES-->
-    <link href="{{asset('css/bootstrap.css') }}" rel="stylesheet"/>
-    <link href="{{asset('storage/favicon.png') }}" rel="icon"/>
+    <link href="{{asset('public/css/bootstrap.css') }}" rel="stylesheet"/>
+    <link href="{{asset('public/storage/favicon.png') }}" rel="icon"/>
     <!-- FONTAWESOME STYLES-->
-    <link href="{{asset('css/font-awesome.css') }}" rel="stylesheet"/>
-    <link href="{{asset('css/foundation-icons.css') }}" rel="stylesheet"/>
+    <link href="{{asset('public/css/font-awesome.css') }}" rel="stylesheet"/>
+    <link href="{{asset('public/css/foundation-icons.css') }}" rel="stylesheet"/>
     <!-- CUSTOM STYLES-->
-    <link href="{{asset('css/custom.css') }}" rel="stylesheet"/>
+    <link href="{{asset('public/css/custom.css') }}" rel="stylesheet"/>
     <!-- GOOGLE FONTS-->
     <link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
     <!-- JQUERY SCRIPTS -->
-    <script src="{{asset('js/jquery-1.10.2.js')}}"></script>
+    <script src="{{asset('public/js/jquery-1.10.2.js')}}"></script>
     <!-- BOOTSTRAP SCRIPTS -->
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('public/js/bootstrap.min.js')}}"></script>
     <meta name="description"
           content="{{setting('description', settingParent('app'))}}"/>
     <meta name="keywords"
@@ -71,8 +71,8 @@
 </div>
 
 <!-- METISMENU SCRIPTS -->
-<script src="{{asset('js/jquery.metisMenu.js')}}"></script>
+<script src="{{asset('public/js/jquery.metisMenu.js')}}"></script>
 <!-- CUSTOM SCRIPTS -->
-<script src="{{asset('js/custom.js')}}"></script>
+<script src="{{asset('public/js/custom.js')}}"></script>
 </body>
 </html>

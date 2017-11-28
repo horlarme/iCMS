@@ -155,7 +155,7 @@ class PostController extends Controller
 
     public function tags()
     {
-        return is_null($this->request->get('tag')) ? 'iCMS' : $this->request->get('tag');
+        return is_null($this->request->get('tag')) ? 'Simply' : $this->request->get('tag');
     }
 
     public function category_id()

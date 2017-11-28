@@ -21,7 +21,7 @@ class CreatePostTable extends Migration
             $table->longText('content');
             $table->integer('user_id')->unsigned();
             $table->integer('category_id')->unsigned();
-            $table->string('views')->default(o);
+            $table->string('views')->default(0);
             $table->string('tags');
             $table->string('url')->unique();
             $table->integer('type')->default(0)->comment('0 - Draft, 1 - Scheduled, 2 - Published, 3 - Deleted');

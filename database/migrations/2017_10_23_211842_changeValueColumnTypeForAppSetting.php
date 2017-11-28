@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class SettingList extends Migration
+class ChangeValueColumnTypeForAppSetting extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class SettingList extends Migration
      */
     public function up()
     {
-        Schema::create('settinglist', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('value');
+        Schema::table('appsetting', function (Blueprint $table) {
+            $table->text('value')->change();
         });
     }
 
@@ -27,8 +25,8 @@ class SettingList extends Migration
      */
     public function down()
     {
-        Schema::table('settinglist', function (Blueprint $table) {
-            $table->drop();
+        Schema::table('appsetting', function (Blueprint $table) {
+            $table->string('value')->change();
         });
     }
 }

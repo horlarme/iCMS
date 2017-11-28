@@ -74,6 +74,12 @@ if(!function_exists('tag')){
     }
 }
 
+if(!function_exists('page')){
+    function page($name = ''){
+        return( \App\Pages::where('title', $name)->first());
+    }
+}
+
 if (!function_exists('categories')) {
     /**
      * Provide all the list of the categories that are not deleted
@@ -96,8 +102,8 @@ if (!function_exists('posts')) {
     function posts($limit = false)
     {
         if ($limit) {
-            return \App\Posts::orderBy('id')->limit($limit)->get();
+            return \App\Posts::orderBy('id','DESC')->limit($limit)->get();
         }
-        return \App\Posts::orderBy('id');
+        return \App\Posts::orderBy('id', 'DESC');
     }
 }

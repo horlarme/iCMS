@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="info">
                                     <!-- CATEGORY LINK -->
-                                    <a href="" class="text category">
+                                    <a href="{{route('category', $post->category->name)}}" class="text category">
                                         <i class='fi-social-designer-news'></i> {{$post->category->name}}</a>
                                     <!-- DATE -->
                                     <a href="" class="text date"><i class='fi-calendar'></i> {{$post->created_at->format('D d M, Y')}}

@@ -1,5 +1,5 @@
 @extends('layout.site')
-@section('pageTitle') {{ getApp('name') . " - " . $categoryName}} @stop
+@section('pageTitle') {{ getApp('name') . " - Category - " . $categoryName}} @stop
 @section('pageContent')
     <div class="content">
         <div class="mostRecentPost">

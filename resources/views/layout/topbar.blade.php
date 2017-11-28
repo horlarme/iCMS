@@ -6,7 +6,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <img src="{{asset('storage/logo.png')}}" class="navbar-brand img-responsive"/>
+            <img src="{{asset('public/storage/logo.png')}}" class="navbar-brand img-responsive"/>
         </div>
         <li class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -17,7 +17,7 @@
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-menu-left" style="width: 100%;">
                             <li class="user-image-box">
-                                <img src="{{ asset('storage/' . Auth::user()->image )}}" class="user-image-icon">
+                                <img src="{{ asset('public/storage/' . Auth::user()->image )}}" class="user-image-icon">
                             </li>
                             <li><a href="{{ route('profile') }}">My Profile</a></li>
                             <div class="divider"></div>

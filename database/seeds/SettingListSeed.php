@@ -12,13 +12,16 @@ class SettingListSeed extends Seeder
     public function run()
     {
         DB::table('settinglist')->insert([
-        		[
-                    'name' => 'app',
-                    'value' => 'Application'
-                ],[
-        			'name' => 'user',
-        			'value' => 'User Preferences'
-        		]
-        	]);
+            [
+                'name' => 'app',
+                'value' => 'Application'
+            ], [
+                'name' => 'user',
+                'value' => 'User Preferences'
+            ], [
+                'name' => 'menu',
+                'Navigation / Menu List'
+            ]
+        ]);
     }
 }

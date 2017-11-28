@@ -3,7 +3,7 @@
         <ul class="nav" id="main-menu">
 
             {{--<li class="text-center user-image-back">--}}
-            {{--<img src="{{asset('storage/avatar-male.png')}}" class="img-responsive"/>--}}
+            {{--<img src="{{asset('public/storage/avatar-male.png')}}" class="img-responsive"/>--}}
             {{--</li>--}}
 
             <li>
@@ -92,7 +92,7 @@
 
         <div class="row footer">
             <div class="footer">
-                &copy; {{date('Y')}}, {{strtoupper(setting('name', settingParent('app')))}}
+                &copy; {{date('Y')}}, {{strtoupper(env('APP_NAME'))}}
             </div>
         </div>
     </div>

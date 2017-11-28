@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Pages;
 use App\Posts;
 use Illuminate\Http\Request;
 
@@ -36,10 +37,22 @@ class PageController extends Controller
         return view('blog.blog', compact('post'));
     }
 
+    public function viewPage($pageTitle)
+    {
+        $page = $this->thisPage($pageTitle);
+        return view('blog.page', compact('page'));
+    }
+
     public function thisPost($postURL)
     {
         return Posts::with('author', 'category')
             ->where('url', $postURL)
+            ->firstOrFail();
+    }
+
+    public function thisPage($pageTitle)
+    {
+        return Pages::where('title', $pageTitle)
             ->firstOrFail();
     }
 

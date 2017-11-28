@@ -1,11 +1,11 @@
 @extends('layout.app')
 @section('title') Setting | {{ucwords($setting->name) }} @stop
 @section('others')
-    <link rel='stylesheet' href="{{ asset('fancybox/dist/jquery.fancybox.min.css')}}">
-    <script type="text/javascript" src="{{ asset('tinymce/tinymce.min.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('js/main.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('fancybox/dist/jquery.fancybox.min.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('js/settings.js')}}"></script>
+    <link rel='stylesheet' href="{{ asset('public/fancybox/dist/jquery.fancybox.min.css')}}">
+    <script type="text/javascript" src="{{ asset('public/tinymce/tinymce.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/main.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('public/fancybox/dist/jquery.fancybox.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/settings.js')}}"></script>
 @stop
 @section('pageHeader') {{ ucwords($setting->value) }} @stop
 @section('pageText')

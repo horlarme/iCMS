@@ -1,5 +1,5 @@
 @extends('layout.site')
-@section('pageTitle') {{$post->title}} @stop
+@section('pageTitle') {{getApp('name') . " - " . $post->title}} @stop
 @section('pageDescription'){{$post->description}} @stop
 @section('pageContent')
     <div class="post single-post">

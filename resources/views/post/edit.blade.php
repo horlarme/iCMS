@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('title') Edit Post @stop
 @section('others')
-    <link rel='stylesheet' href="{{ asset('fancybox/dist/jquery.fancybox.min.css')}}">
+    <link rel='stylesheet' href="{{ asset('public/fancybox/dist/jquery.fancybox.min.css')}}">
     <!-- Tags Input -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css"/>
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
@@ -11,9 +11,9 @@
           href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css"/>
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
     <!-- Date Picker-->
-    <script type="text/javascript" src="{{ asset('tinymce/tinymce.min.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('js/main.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('fancybox/dist/jquery.fancybox.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('public/tinymce/tinymce.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('public/js/main.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('public/fancybox/dist/jquery.fancybox.min.js')}}"></script>
     <script>
         {!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/lfm.js')) !!}
     </script>

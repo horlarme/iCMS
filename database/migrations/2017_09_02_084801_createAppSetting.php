@@ -13,13 +13,13 @@ class CreateAppSetting extends Migration
      */
     public function up()
     {
-        Schema::create('AppSetting', function (Blueprint $table){
+        Schema::create('appsetting', function (Blueprint $table){
             $table->increments('id');
             $table->integer('setting_id')->unsigned();
             $table->string('name');
             $table->string('value');
 
-            $table->foreign('setting_id')->references('id')->on('SettingList');
+            $table->foreign('setting_id')->references('id')->on('settinglist');
         });
     }
 
@@ -30,6 +30,6 @@ class CreateAppSetting extends Migration
      */
     public function down()
     {
-        DB::drop('AppSetting');
+        DB::drop('appsetting');
     }
 }
