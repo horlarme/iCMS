@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * The User's Role not the Role List
  * Class Roles
  * @package App
  */

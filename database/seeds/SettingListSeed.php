@@ -20,7 +20,7 @@ class SettingListSeed extends Seeder
                 'value' => 'User Preferences'
             ], [
                 'name' => 'menu',
-                'Navigation / Menu List'
+                'value' => 'Navigation / Menu List'
             ]
         ]);
     }

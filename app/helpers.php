@@ -22,7 +22,7 @@ if (!function_exists('userRole')) {
         if (is_null($value)) {
             return $role->userRole($user_id);
         }
-        return $role->userRole($user_id, $role);
+        return $role->userRole($user_id, $value);
     }
 }
 

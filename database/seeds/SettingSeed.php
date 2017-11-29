@@ -13,12 +13,12 @@ class SettingSeed extends Seeder
     {
         DB::table('appsetting')->insert([
             [
-                'setting_id' => 1,
+                'setting_id' => DB::table('settinglist')->where('name','app')->first()->id,
                 'name' => 'name',
                 'value' => 'Simply'
             ],
             [
-                'setting_id' => 1,
+                'setting_id' => DB::table('settinglist')->where('name','app')->first()->id,
                 'name' => 'user.register',
                 'value' => 'true'
             ]
