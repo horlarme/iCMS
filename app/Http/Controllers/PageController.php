@@ -39,6 +39,14 @@ class PageController extends Controller
 
     public function viewPage($pageTitle)
     {
+        /**
+         * Do not want to convince 'advance' with a post
+         */
+        if(strtolower($pageTitle) == 'advance'){
+            return response()
+                ->redirectToRoute('dashboard');
+        }
+        
         $page = $this->thisPage($pageTitle);
         return view('blog.page', compact('page'));
     }

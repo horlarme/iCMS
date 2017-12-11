@@ -23,16 +23,7 @@ Route::group(['prefix' => '/advance'], function () {
 
     Route::group(['middleware' => 'auth'], function () {
 
-        // Route::get('startApp', [
-            // 'as' => 'startApp',
-            // 'uses' => function () {
-                // $laravelApplication = require __DIR__ . '/..//bootstrap/app.php';
-                // $kernel = $laravelApplication->make(Illuminate\Contracts\Console\Kernel::class);
-                // $kernel->handle($input = new Symfony\Component\Console\Input\ArgvInput(['artisan', 'serve']));
-            // }
-        // ])->middleware('restrict');
-
-        Route::get('', 'PageController@index')->name('dashboard');
+        Route::get('/dashboard', 'PageController@index')->name('dashboard');
 
         Route::get('storage', 'PageController@storage')->name('storage');
 
