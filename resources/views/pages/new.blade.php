@@ -103,6 +103,15 @@
                 <!--The Left Panel Option-->
                 <div class="col-xs-12 col-md-4">
                     <div class="panel panel-primary">
+                        <div class="panel-heading">Options</div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <input type="checkbox" name="addToMenuList" {{old('addToMenuList') == 'on' ? 'checked' : ''}}>
+                                Add to the list of menus in the navigation bar.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
                         <div class="panel-heading">Publish</div>
                         <div class="panel-body">
                             {{--<input type="checkbox" name="schedule" value="no" checked class="postnow"> Toggle this box--}}

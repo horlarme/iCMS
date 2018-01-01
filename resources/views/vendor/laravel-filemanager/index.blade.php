@@ -146,12 +146,10 @@
     var lfm_route = "{{ url(config('lfm.prefix')) }}";
     var lang = {!! json_encode(trans('laravel-filemanager::lfm')) !!};
   </script>
-  <script>{!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/js/script.js')) !!}</script>
-  {{-- Use the line below instead of the above if you need to cache the script. --}}
-  {{-- <script src="{{ asset('public/vendor/laravel-filemanager/js/script.js') }}"></script> --}}
+  <script src="{{ asset('public/vendor/laravel-filemanager/js/script.js') }}"></script>
   <script>
     $.fn.fab = function () {
-      var menu = this;x
+      var menu = this;
       menu.addClass('mfb-component--br mfb-zoomin').attr('data-mfb-toggle', 'hover');
       var wrapper = menu.children('li');
       wrapper.addClass('mfb-component__wrap');

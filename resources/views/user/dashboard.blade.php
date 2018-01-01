@@ -22,55 +22,43 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h5>Top 5 Viewed Posts</h5>
+            <h5>Top 10 Viewed Posts</h5>
+            @php($posts = posts(10, 'views', 'DESC'))
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-hover">
-                    <thead>
+                    <thead class="thead-inverse">
                     <tr>
-                        <th>Views</th>
+                        <th><i class="fa fa-eye"></i> Views</th>
                         <th>Title</th>
-                        <th>Category</th>
+                        <th>Author</th>
+                        <th>Description</th>
                         <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>201</td>
-                        <td>This Is A Simple Post</td>
-                        <td>Programming</td>
-                        <td>
-                            <a href="post-edit.html" class="btn btn-primary" title="Edit"><i class="fa fa-edit"></i></a>
-                            <a href="post-delete.html" class="btn btn-danger" title="Delete"><i class="fa fa-trash-o"></i></a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="col-md-12">
-            <h5>Scheduled Posts</h5>
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover">
-                    <thead>
-                    <tr>
-                        <th>Schedule To</th>
-                        <th>Title</th>
-                        <th>Category</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Tue 11 Mar, 2017 <small>11:00am</small></td>
-                        <td>This Is A Simple Post</td>
-                        <td>Programming</td>
-                        <td>
-                            <a href="post-edit.html" class="btn btn-primary" title="Edit"><i class="fa fa-edit"></i></a>
-                            <a href="post-edit.html" class="btn btn-primary" title="Publish Now"><i class="fa fa-share"></i></a>
-                            <a href="post-delete.html" class="btn btn-danger" title="Move to trash"><i class="fa fa-trash-o"></i></a>
-                        </td>
-                    </tr>
+                    <?php if(count($posts) < 1){?>
+                        <tr>
+                            <td colspan="5">There is currently no page created</td>
+                        </tr>
+                    <?php } ?>
+                    @foreach($posts as $post)
+                        <tr>
+                            <td>{{$post->views}}</td>
+                            <td>
+                                <a href="{{route('post', $post->url)}}">{{ ucwords($post->title) }}</a>
+                            </td>
+                            <td>
+                                {{ ucwords($post->author->first_name . " " . $post->author->last_name) }}
+                            </td>
+                            <td>{{ substr($post->description, 0, 120) }}</td>
+                            <td>
+                                <a href="{{route('post.edit', $post->id)}}" class="btn btn-primary"><i
+                                            class="fa fa-edit"></i>Edit</a>
+                                <a href="" data-delete="{{route('post.delete', $post->id)}}" class="btn btn-danger"><i
+                                            class="fa fa-trash-o"></i>Delete</a>
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

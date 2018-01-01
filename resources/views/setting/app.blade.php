@@ -48,7 +48,7 @@
                         <div class="col-md-10">
                             <input type="text" name="keywords" class="update form-control"
                                    value="{{ getApp('keywords') }}"/>
-                            <p class="help-block">Each keyword should be comma separated and should.</p>
+                            <p class="help-block">Each keyword should be comma separated.</p>
                         </div>
                     </div>
 
@@ -60,7 +60,7 @@
                             <p class="help-block">This will be the text that serves as the motto of your website and will be by your site name.</p>
                         </div>
                     </div>
-
+                    
                 </div>
 
                 <div class="form-group">

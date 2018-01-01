@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     function responsive_filemanager_callback(field_id){
 
-        var url = $('#' + field_id).val();
+        var url = 'public' + $('#' + field_id).val();
 
         //Setting the image to use this new image
         $('.blogImageUpload').attr('src', $url);

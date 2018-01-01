@@ -23,14 +23,14 @@
                     <tbody>
                     <?php if(count($posts) < 1){?>
                         <tr>
-                            <td colspan="5">There is currently no page created</td>
+                            <td colspan="5">There is currently no post created yet</td>
                         </tr>
                     <?php } ?>
                     @foreach($posts as $post)
                         <tr>
                             <td>{{$post->views}}</td>
                             <td>
-                                <a href="{{url($post->title)}}">{{ ucwords($post->title) }}</a>
+                                <a href="{{route('post', $post->url)}}">{{ ucwords($post->title) }}</a>
                             </td>
                             <td>
                                 {{ ucwords($post->author->first_name . " " . $post->author->last_name) }}

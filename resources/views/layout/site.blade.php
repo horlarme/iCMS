@@ -16,10 +16,13 @@
     <link rel="stylesheet" type="text/css" href="{{asset('public/css/Animate.css')}}"/>
     <!-- Fancy Box -->
     <link rel="stylesheet" type="text/css" href="{{asset('public/css/jquery.fancybox.min.css')}}"/>
-    <link rel="icon" href="{{asset('public/storage/favicon.png')}}"><!-- ITBlog's Favicon/Icon -->
+    <link rel="icon" href="{{asset('public/storage/favicon.png')}}"><!-- US's Favicon/Icon -->
+        <!-- FONTAWESOME STYLES-->
+    <link href="{{asset('public/css/font-awesome.css') }}" rel="stylesheet"/>
+    <link href="{{asset('public/css/foundation-icons.css') }}" rel="stylesheet"/>
     <!-- JQuery -->
     <!--<script type="text/javascript" src='//ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js'></script>-->
-    <script type="text/javascript" src="{asset('public/js/jquery-1.10.2.js')}}"></script>
+    <script type="text/javascript" src="{{asset('public/js/jquery-1.10.2.js')}}"></script>
     <!-- Fancy Box -->
     <script src="{{asset('public/js/jquery.fancybox.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('public/js/mainscript.js')}}"></script><!-- Main Script -->
@@ -33,7 +36,7 @@
     <!-- Here is where all the necessary files for the web-site's head content will be put. -->
     <div class="head-section">
         <div class="logo size-sd-12">
-            <img src="{{asset('public/storage/' . getApp('logo'))}}" alt="{{getApp('name')}}" width="65%"/>
+            <img src="{{asset('public/storage/logo.png')}}" alt="{{getApp('name')}}" width="65%"/>
         </div>
         <div class="navigation-container">
             <div class="navigation-button animated">
@@ -41,11 +44,11 @@
                 <span class="openButton"><i class="fi-list"></i><br/>Menu</span>
             </div>
 
-            <div class="navigation size-td-8 size-ld-8 size-md-10 animated">
+            <div class="navigation size-td-8 size-ld-8 size-md-9 animated">
                 <a href="{{route('home')}}" title="" class=""><span class="icon fi-home"></span> Home</a>
-                @foreach(categories() as $category)
-                    <a href="{{route('category', $category->name)}}" title="{{$category->title}}">
-                        <span class="icon {{$category->icon}}"></span> {{ucwords($category->name)}}</a>
+                @foreach(navigationItems() as $navItem)
+                    <a href="{{$navItem['link']}}">
+                        <span class="icon {{$navItem['icon']}}"></span> {{ucwords($navItem['name'])}}</a>
                 @endforeach
             </div>
             <div class="navigation-background"></div>
@@ -75,22 +78,6 @@
         </div>
 
         <div class="right-section panel">
-            <div class="advert content">
-                @yield('pageRightAdvertContent')
-            </div>
-            <div class="social content">
-                <div class="content">
-                    <div style="width: 100%; overflow: hidden;" class="fb-page"
-                         data-href="https://www.facebook.com/itblogpage/" data-small-header="true"
-                         data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="true">
-                        <blockquote cite="https://www.facebook.com/itblogpage/" class="fb-xfbml-parse-ignore"><a
-                                    href="https://www.facebook.com/itblogpage/">ITBlog</a></blockquote>
-                    </div>
-                </div>
-            </div>
-
-            <div class="advert content"></div>
-
             <div class="recentPosts content">
                 <h1 class="header">The Recent Posts</h1>
                 <div class="content">
@@ -106,31 +93,6 @@
 
             <div class="clear-float"></div>
 
-            {{--<div class="content newsletter">--}}
-            {{--<h1 class="header">Newsletter Subscription</h1>--}}
-            {{--<div class="content">--}}
-            {{--<p>Be the first to get the latest post and news from our website through an e-mail by subscribing to--}}
-            {{--our newsletter below.</p>--}}
-            {{--<div class="formBox">--}}
-            {{--<input type="email" name="newsletterEmail" placeholder="Enter Your E-Mail Here..."--}}
-            {{--class="inputBOX">--}}
-            {{--</div>--}}
-            {{--<div class="newsletterResultBox"></div>--}}
-            {{--<div class="formBox">--}}
-            {{--<input type="submit" value="Subscribe" class="inputBOX button" name="newsletterButton">--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--</div>--}}
-
-            <div class="advert content"></div>
-
-            <div class="tags content">
-                <!--<h1 class="header">Common Tags</h1>-->
-                <!--<div class="content">-->
-                <!--<a href="">internet</a>-->
-                <!--</div>-->
-            </div>
-
         </div>
         <div class="clear-float"></div>
     </div>
@@ -142,25 +104,17 @@
                                 Icon.</strong></em></a></p>
             </div>
 
-            <div class="links">
-                <h6>Join us on:</h6>
-                <a href="https://www.facebook.com/itblogpage" class="footer_facebook"><span class="fi-social-facebook">&nbsp;</span>Facebook</a>
-                <a href="http://www.twitter.com/ITBlogPage" class="footer_twitter"><span class="fi-social-twitter">&nbsp;</span>Twitter</a>
-                <div class="clear-float"></div>
-            </div>
-
-
             <div class="size-sd-12 foot">
-                <a href="{{route('page', page('About Us')->title)}}" title="Get to Know what ITBlog means and is." class=""><span
-                            class="fi-page-csv">&nbsp;</span>About ITBlog</a>
-                <a href="{{route('page', page('Contact Us')->title)}}" onclick="showContactForm()"
-                   title="Let us be there for you!" class=""><span
-                            class="fi-address-book">&nbsp;</span>Contact ITBlog</a>
-                <a href="advertise.php" title="Let us be there for you!" class=""><span
-                            class="fi-paperclip">&nbsp;</span>Advertise</a>
-                <a href="copyright.php" title="All credits given back to the rightful owners."><span
-                            class="fi-social-github">&nbsp;</span>Copyrights</a>
-                <p>&copy; 2016&nbsp;Lawal Oladipupo's ITBlog</p>
+                <a href="{{route('page', page('About Us')->title)}}"><span
+                            class="fi-page-csv">&nbsp;</span>About US</a>
+                <a href="{{route('page', page('Contact Us')->title)}}"><span
+                            class="fi-address-book">&nbsp;</span>Contact US</a>
+                <p>
+                    <br />
+                    Created with the <i class="fa fa-heart"> </i> of <a href="">Simply</a>
+                    <br />
+                    <a href="{{route('login')" style="color: blue;text-decoration: underline;">Administrator Login</a>
+                </p>
             </div>
         </div>
     </footer>

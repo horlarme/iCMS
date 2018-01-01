@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('title') Create New Page @stop
+@section('title') Edit {{$page->title}} Page @stop
 @section('others')
     <link rel='stylesheet' href="{{ asset('public/fancybox/dist/jquery.fancybox.min.css')}}">
     <!-- Tags Input -->
@@ -104,6 +104,16 @@
                 </div>
                 <!--The Left Panel Option-->
                 <div class="col-xs-12 col-md-4">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Options</div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <input type="checkbox" name="addToMenuList" 
+                                {{ ($page->is_a_menu || old('addToMenuList')) == 'on' ? 'checked' : ''}}>
+                                Add to the list of menus in the navigation bar.
+                            </div>
+                        </div>
+                    </div>
                     <div class="panel panel-primary">
                         <div class="panel-heading">Update</div>
                         <div class="panel-body">

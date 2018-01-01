@@ -12,7 +12,9 @@
     <tr>
       <td>
         <i class="fa {{ $item->icon }}"></i>
-        <a class="{{ $item->is_file ? 'file' : 'folder'}}-item clickable" data-id="{{ $item->is_file ? $item->url : $item->path }}">
+           @php($ipath = $item->is_file ? str_replace("/storage", "/public/storage", $item->url) : $item->path)
+        <a class="{{ $item->is_file ? 'file' : 'folder'}}-item clickable"
+           data-id="{{ $ipath }}">
           {{ str_limit($item->name, $limit = 20, $end = '...') }}
         </a>
       </td>

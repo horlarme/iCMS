@@ -1,3 +1,7 @@
+/**
+ * Script edited to match what Simply needs
+ */
+
 (function( $ ){
 
   $.fn.filemanager = function(type, options) {

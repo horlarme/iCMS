@@ -99,11 +99,45 @@ if (!function_exists('getApp')) {
 }
 
 if (!function_exists('posts')) {
-    function posts($limit = false)
+    function posts($limit = false, $orderBy = 'id', $orderMode = 'DESC')
     {
         if ($limit) {
-            return \App\Posts::orderBy('id','DESC')->limit($limit)->get();
+            return \App\Posts::orderBy($orderBy, $orderMode)->limit($limit)->get();
         }
         return \App\Posts::orderBy('id', 'DESC');
+    }
+}
+
+if(!function_exists('navigationItems')){
+    /**
+     * Creating an object list of the menu list
+     * @return object
+     */
+    function navigationItems(){
+
+        $items          = [];
+        $indexes        = 0;
+        $pages          = \App\Pages::where('is_a_menu', true)
+                            ->select('title')
+                            ->get();
+        $categories     = categories();
+
+        foreach ($categories as $category) {
+            $items[$indexes]['name'] = $category->name;
+            $items[$indexes]['link'] = route('category', $category->name);
+            $items[$indexes]['type'] = 'category';
+            $items[$indexes]['icon'] = $category->icon;
+            $indexes++;
+        }
+
+        foreach ($pages as $page) {
+            $items[$indexes]['name'] = $page->title;
+            $items[$indexes]['link'] = route('page', $page->title);
+            $items[$indexes]['type'] = 'page';
+            $items[$indexes]['icon'] = 'fi-page-doc';
+            $indexes++;
+        }
+
+        return collect($items);
     }
 }

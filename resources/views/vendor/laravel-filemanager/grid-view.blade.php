@@ -5,8 +5,9 @@
   @foreach($items as $item)
   <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 img-row">
     <?php $item_name = $item->name; ?>
-    <?php $thumb_src = $item->thumb; ?>
+    <?php $thumb_src = str_replace("/storage", "/public/storage", $item->thumb); ?>
     <?php $item_path = $item->is_file ? $item->url : $item->path; ?>
+    <?php $item_path = str_replace("/storage", "/public/storage", $item_path); ?>
 
     <div class="square clickable {{ $item->is_file ? 'file' : 'folder'}}-item" data-id="{{ $item_path }}">
       @if($thumb_src)

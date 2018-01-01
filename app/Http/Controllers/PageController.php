@@ -47,21 +47,29 @@ class PageController extends Controller
                 ->redirectToRoute('dashboard');
         }
         
-        $page = $this->thisPage($pageTitle);
+        $page = $this->thisPage(str_replace("_", " ", $pageTitle));
         return view('blog.page', compact('page'));
     }
 
     public function thisPost($postURL)
     {
-        return Posts::with('author', 'category')
-            ->where('url', $postURL)
-            ->firstOrFail();
+        try{
+            return Posts::with('author', 'category')
+                ->where('url', $postURL)
+                ->firstOrFail();
+            }catch(\Exception $e){
+                return abort('404');
+            }
     }
 
     public function thisPage($pageTitle)
     {
-        return Pages::where('title', $pageTitle)
-            ->firstOrFail();
+        try{
+            return Pages::where('title', $pageTitle)
+                ->firstOrFail();
+            }catch(\Exception $e){
+                return abort('404');
+            }
     }
 
     public function increaseViews($post)

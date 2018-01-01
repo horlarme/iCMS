@@ -10,10 +10,6 @@
                 <a href="{{route('dashboard')}}"><i class="fa fa-desktop "></i>Dashboard</a>
             </li>
 
-            <li>
-                <a href="{{route('profile')}}"><i class="fa fa-user"></i>My Profile</a>
-            </li>
-
             <!--Categories-->
             <li>
                 <a href="#"><i class="fa fa-list"></i>Categories<span class="fa arrow"></span></a>

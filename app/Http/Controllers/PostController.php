@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Posts;
+use App\Category;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -150,7 +151,8 @@ class PostController extends Controller
 
     public function image()
     {
-        return is_null($this->request->get('image')) ? 'default-blog-image.jpg' : url($this->request->get('image'));
+        $image = $this->request->get('image') ? $this->request->get('image') : '/public/storage/default-blog-image.jpg';
+        return url($image);
     }
 
     public function tags()
@@ -160,7 +162,7 @@ class PostController extends Controller
 
     public function category_id()
     {
-        return is_null($this->request->get('category')) ? '1' : $this->request->get('category');
+        return is_null($this->request->get('category')) ? Category::where('name', 'undefined')->first()->id : $this->request->get('category');
     }
 
     public function url()
@@ -170,8 +172,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Posts::with('author')->paginate(15);
-        return view('post.index', compact('posts'));
+        return view('post.index');
     }
 
     public function edit($id)

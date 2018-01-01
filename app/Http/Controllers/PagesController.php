@@ -111,8 +111,6 @@ class PagesController extends Controller
 
     public function create()
     {
-        //Storing the request values
-        $this->request = $this->request;
         //Validate the post
         $this->validatePage();
 
@@ -124,7 +122,8 @@ class PagesController extends Controller
             'author' => auth()->user()->id,
             'title' => $this->title(),
             'content' => $this->content(),
-            'description' => $this->description()
+            'description' => $this->description(),
+            'is_a_menu' => $this->addToMenuList()
         ]);
 
         if ($page) {
@@ -143,6 +142,11 @@ class PagesController extends Controller
     public function title()
     {
         return $this->request->get('title');
+    }
+
+    public function addToMenuList()
+    {
+        return $this->request->get('addToMenuList') == 'on' ? 1 : 0;
     }
 
     public function content()
@@ -176,7 +180,8 @@ class PagesController extends Controller
             'author' => auth()->user()->id,
             'title' => $this->title(),
             'content' => $this->content(),
-            'description' => $this->description()
+            'description' => $this->description(),
+            'is_a_menu' => $this->addToMenuList()
         ]);
 
         if ($page) {
@@ -190,6 +195,5 @@ class PagesController extends Controller
                 ->redirectToRoute('post.edit', $pageID);
         }
     }
-
 
 }

@@ -1,3 +1,6 @@
+/**
+ * This script has been edited to match with what Simply uses
+ */
 var show_list;
 var sort_type = 'alphabetic';
 
@@ -329,6 +332,9 @@ function useFile(file_url) {
       window.opener.SetUrl(url, file_path);
     }
 
+    /**
+     * Closing the window if the windows is a pop up
+     */
     if (window.opener) {
       window.close();
     }

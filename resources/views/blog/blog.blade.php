@@ -43,7 +43,6 @@
             }
         </style>
         <div class="post-tag"><!-- Post's Tag -->
-            <div class="float-left" style="font-weight: bold;">Tags:</div>
             {{--displaying the list of tags for the post--}}
             @foreach (explode(",", $post->tags) as $tag)
                 <a href='{{route('tag',$tag)}}' class='fi-price-tag'>{{$tag}}</a>&nbsp;
@@ -52,8 +51,6 @@
 
         <!-- Go to www.addthis.com/dashboard to customize your tools -->
         <div class="addthis_relatedposts_inline"></div>
-    </div>
-    <div class="advert">
     </div>
 @stop
 

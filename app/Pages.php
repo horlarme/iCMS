@@ -13,7 +13,7 @@ class Pages extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['author', 'title', 'description', 'content'];
+    protected $fillable = ['author', 'title', 'description', 'content', 'is_a_menu'];
 
     public function user()
     {
