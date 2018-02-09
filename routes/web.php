@@ -14,6 +14,18 @@ Route::prefix('/')->group(function () {
     Route::get('category/{categoryName}', 'PageController@byCategory')->name('category');
 
     Route::get('tag/{tag}', 'PageController@byTag')->name('tag');
+
+
+    /**
+     * Simply Installation
+     */
+    Route::group(['prefix' => 'simply/install'], function(){
+        Route::get('','Installation@index')->name('install');
+        Route::post('','Installation@install')->name('start');
+    });
+    /**
+     * End Installation routes
+     */
 });
 
 

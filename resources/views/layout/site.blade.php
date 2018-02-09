@@ -113,7 +113,7 @@
                     <br />
                     Created with the <i class="fa fa-heart"> </i> of <a href="">Simply</a>
                     <br />
-                    <a href="{{route('login')" style="color: blue;text-decoration: underline;">Administrator Login</a>
+                    <a href="{{route('login')}}" style="color: blue;text-decoration: underline;">Administrator Login</a>
                 </p>
             </div>
         </div>

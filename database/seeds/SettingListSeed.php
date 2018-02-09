@@ -15,12 +15,6 @@ class SettingListSeed extends Seeder
             [
                 'name' => 'app',
                 'value' => 'Application'
-            ], [
-                'name' => 'user',
-                'value' => 'User Preferences'
-            ], [
-                'name' => 'menu',
-                'value' => 'Navigation / Menu List'
             ]
         ]);
     }
