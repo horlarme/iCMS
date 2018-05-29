@@ -18,10 +18,10 @@ class Installation extends Controller
          * Determing if the user has already installed this app
          * by checking for DB credentials
          */
-//        if (env('DB_PASSWORD') && env('DB_USERNAME') && env('DB_DATABASE') && env('DB_HOST')) {
-//            echo "<h1>Simply has already been installed</h1>";
-//            exit;
-//        }
+       if (env('DB_PASSWORD') && env('DB_USERNAME') && env('DB_DATABASE') && env('DB_HOST')) {
+           echo "<h1>Simply has already been installed</h1>";
+           exit;
+       }
     }
 
     public function index()
